@@ -112,6 +112,7 @@ public func lint(_ commits: String, verbose: Bool = false) throws -> Bool {
         else {
             echo(.error, message:
             """
+                
             Commit message:
             ------------------------
             \(commits)
