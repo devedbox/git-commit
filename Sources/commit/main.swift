@@ -19,15 +19,16 @@ guard CommandLine.arguments.count >= 2 else {
     exit(1)
 }
 
-let commit_msg_path = CommandLine.arguments[1]
-let commit_msg_path_url = URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/" + commit_msg_path)
-var commit_msg = try String(contentsOf: commit_msg_path_url)
+let commitsPath = CommandLine.arguments[1]
+let commitsPathUrl = URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/" + commitsPath)
+let originalCommits = try String(contentsOf: commitsPathUrl)
+let commits = originalCommits[...originalCommits.index(before: originalCommits.index(before: originalCommits.endIndex))]
 
-guard !commit_msg.isEmpty else {
+guard !commits.isEmpty else {
     exit(1)
 }
 
-guard try lint(commit_msg) else {
+guard try lint(String(commits)) else {
     exit(1)
 }
 
