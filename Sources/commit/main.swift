@@ -27,6 +27,8 @@ guard !commit_msg.isEmpty else {
     exit(1)
 }
 
-try lint(commit_msg)
+guard try lint(commit_msg) else {
+    exit(1)
+}
 
 exit(0)
