@@ -110,7 +110,14 @@ public func lint(_ commits: String, verbose: Bool = false) throws -> Bool {
         , case let match? = matches.last
         , match.range == range
         else {
-            echo(.error, message: "\nCommit message: \n```\n\(commits)\n```\ndid not pass!!!")
+            echo(.error, message:
+            """
+            Commit message:
+            ------------------------
+            \(commits)
+            ------------------------
+            did not pass validate!!!
+            """)
             echo(.warning, message:
             """
 
