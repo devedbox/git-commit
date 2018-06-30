@@ -2,9 +2,12 @@ import XCTest
 @testable import CommitFramework
 
 final class CommitTests: XCTestCase {
+    
+    let rule = GitCommitRule()
+    
     func testLintSimpleFeatureCommits() {
-        let verbose = false
-        var commits = ""
+        let options: GitCommitLintOptions = [.verbose]
+        var commits: GitCommit = ""
         
         let asciiCommits = "This is a commit message."
         let unicodeCommits = "这是一条提交信息。"
@@ -13,35 +16,35 @@ final class CommitTests: XCTestCase {
         let unicudeScope = "提交域"
         
         func runTest(for scope: String, with targetCommits: String) {
-            commits = "feat(\(scope)): \(targetCommits)"
-            XCTAssertTrue(try lint(commits, verbose: verbose))
-            commits = "fix(\(scope)): \(targetCommits)"
-            XCTAssertTrue(try lint(commits, verbose: verbose))
-            commits = "docs(\(scope)): \(targetCommits)"
-            XCTAssertTrue(try lint(commits, verbose: verbose))
-            commits = "style(\(scope)): \(targetCommits)"
-            XCTAssertTrue(try lint(commits, verbose: verbose))
-            commits = "refactor(\(scope)): \(targetCommits)"
-            XCTAssertTrue(try lint(commits, verbose: verbose))
-            commits = "test(\(scope)): \(targetCommits)"
-            XCTAssertTrue(try lint(commits, verbose: verbose))
-            commits = "chore(\(scope)): \(targetCommits)"
-            XCTAssertTrue(try lint(commits, verbose: verbose))
+            commits = GitCommit(stringLiteral: "feat(\(scope)): \(targetCommits)")
+            XCTAssertTrue(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "fix(\(scope)): \(targetCommits)")
+            XCTAssertTrue(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "docs(\(scope)): \(targetCommits)")
+            XCTAssertTrue(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "style(\(scope)): \(targetCommits)")
+            XCTAssertTrue(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "refactor(\(scope)): \(targetCommits)")
+            XCTAssertTrue(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "test(\(scope)): \(targetCommits)")
+            XCTAssertTrue(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "chore(\(scope)): \(targetCommits)")
+            XCTAssertTrue(try commits.lint(with: rule, options: options))
             
-            commits = "fea(\(scope)): \(targetCommits)"
-            XCTAssertFalse(try lint(commits, verbose: verbose))
-            commits = "fixs(\(scope)): \(targetCommits)"
-            XCTAssertFalse(try lint(commits, verbose: verbose))
-            commits = "doc(\(scope)): \(targetCommits)"
-            XCTAssertFalse(try lint(commits, verbose: verbose))
-            commits = "styling(\(scope)): \(targetCommits)"
-            XCTAssertFalse(try lint(commits, verbose: verbose))
-            commits = "refacte(\(scope)): \(targetCommits)"
-            XCTAssertFalse(try lint(commits, verbose: verbose))
-            commits = "testing(\(scope)): \(targetCommits)"
-            XCTAssertFalse(try lint(commits, verbose: verbose))
-            commits = "choring(\(scope)): \(targetCommits)"
-            XCTAssertFalse(try lint(commits, verbose: verbose))
+            commits = GitCommit(stringLiteral: "fea(\(scope)): \(targetCommits)")
+            XCTAssertFalse(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "fixs(\(scope)): \(targetCommits)")
+            XCTAssertFalse(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "doc(\(scope)): \(targetCommits)")
+            XCTAssertFalse(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "styling(\(scope)): \(targetCommits)")
+            XCTAssertFalse(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "refacte(\(scope)): \(targetCommits)")
+            XCTAssertFalse(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "testing(\(scope)): \(targetCommits)")
+            XCTAssertFalse(try commits.lint(with: rule, options: options))
+            commits = GitCommit(stringLiteral: "choring(\(scope)): \(targetCommits)")
+            XCTAssertFalse(try commits.lint(with: rule, options: options))
         }
         
         runTest(for: asciiScope, with: asciiCommits)
@@ -53,7 +56,7 @@ final class CommitTests: XCTestCase {
     }
     
     func testLintHeaderAndBody() {
-        let verbose = true
+        let options: GitCommitLintOptions = [.verbose]
         var commits = ""
         
         commits = """
@@ -63,7 +66,7 @@ final class CommitTests: XCTestCase {
         The second line of specific message.
         """
         
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -73,7 +76,7 @@ final class CommitTests: XCTestCase {
         The second line of specific message.
         """
         
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -83,7 +86,7 @@ final class CommitTests: XCTestCase {
         The second line of specific message.
         """
         
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -92,7 +95,7 @@ final class CommitTests: XCTestCase {
         The second line of specific message.
         
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -104,11 +107,11 @@ final class CommitTests: XCTestCase {
         
         
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
     }
     
     func testLintHeaderAndFooter() {
-        let verbose = true
+        let options: GitCommitLintOptions = [.verbose]
         var commits = ""
         
         commits = """
@@ -122,7 +125,7 @@ final class CommitTests: XCTestCase {
         sample2
         The removed `inject` wasn't generaly useful for directives so there should be no code using it.
         """
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -141,7 +144,7 @@ final class CommitTests: XCTestCase {
         
         The removed `inject` wasn't generaly useful for directives so there should be no code using it.
         """
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -166,14 +169,14 @@ final class CommitTests: XCTestCase {
         
         
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
         
         Closes #8989, #3131, #issue3, &issue4
         """
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -181,7 +184,7 @@ final class CommitTests: XCTestCase {
         
         Closes #8989, #3131, #issue3, &issue4
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -189,11 +192,11 @@ final class CommitTests: XCTestCase {
         Closes #8989, #3131, #issue3, &issue4
         
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
     }
     
     func testLintHeaderAndBodyAndFooter() {
-        let verbose = true
+        let options: GitCommitLintOptions = [.verbose]
         var commits = ""
         
         commits = """
@@ -210,7 +213,7 @@ final class CommitTests: XCTestCase {
         sample2
         The removed `inject` wasn't generaly useful for directives so there should be no code using it.
         """
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -232,7 +235,7 @@ final class CommitTests: XCTestCase {
         
         The removed `inject` wasn't generaly useful for directives so there should be no code using it.
         """
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -260,7 +263,7 @@ final class CommitTests: XCTestCase {
         
         
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -270,7 +273,7 @@ final class CommitTests: XCTestCase {
         
         Closes #8989, #3131, #issue3, &issue4
         """
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -281,7 +284,7 @@ final class CommitTests: XCTestCase {
         
         Closes #8989, #3131, #issue3, &issue4
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -292,7 +295,7 @@ final class CommitTests: XCTestCase {
         Closes #8989, #3131, #issue3, &issue4
         
         """
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
     }
 
     static var allTests = [

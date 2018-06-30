@@ -11,7 +11,6 @@ import Glibc
 import Darwin
 #endif
 
-import Foundation
 import CommitFramework
 
 guard CommandLine.arguments.count >= 2 else {
@@ -19,26 +18,19 @@ guard CommandLine.arguments.count >= 2 else {
     exit(1)
 }
 
-let commitsPath = CommandLine.arguments[1]
-let commitsPathUrl = URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/" + commitsPath)
-let originalCommits = try String(contentsOf: commitsPathUrl)
-
-let file = try FileHandle(forReadingFrom: commitsPathUrl)
-defer {
-    file.closeFile()
-}
-
-guard var commits = String(data: file.availableData, encoding: .utf8)
-    , !commits.isEmpty
-else {
-    exit(1)
-}
-
-if commits.hasSuffix("\n") {
-    commits.removeLast()
-}
-
-guard try lint(commits) else {
+do {
+    try GitCommit(commitPath: CommandLine.arguments[1]).lint(with: GitCommitRule())
+} catch let error {
+    switch error {
+    case GitCommitError.emptyCommitContents(atPath: let path):
+        echo(.warning, message:
+            """
+            There is no commits content at '\(path)'
+            """)
+    default:
+        break
+    }
+    
     exit(1)
 }
 
