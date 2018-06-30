@@ -1,8 +1,8 @@
 //
-// main.swift
-// Commit
+//  main.swift
+//  git-commit
 //
-// Created by devedbox.
+//  Created by devedbox.
 //
 
 #if os(Linux)
@@ -11,7 +11,7 @@ import Glibc
 import Darwin
 #endif
 
-import CommitFramework
+import GitCommitFramework
 
 guard CommandLine.arguments.count >= 2 else {
     echo(.warning, message: "\nThere is no commits.\n")

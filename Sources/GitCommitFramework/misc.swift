@@ -1,6 +1,6 @@
 //
 //  misc.swift
-//  Commit
+//  GitCommitFramework
 //
 //  Created by devedbox on 2018/6/29.
 //

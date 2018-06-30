@@ -1,7 +1,7 @@
 import XCTest
-@testable import CommitFramework
+@testable import GitCommitFramework
 
-final class CommitTests: XCTestCase {
+final class GitCommitTests: XCTestCase {
     
     let rule = GitCommitRule()
     

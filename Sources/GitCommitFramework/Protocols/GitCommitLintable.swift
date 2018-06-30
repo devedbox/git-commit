@@ -1,6 +1,6 @@
 //
 //  GitCommitLintable.swift
-//  CommitFramework
+//  GitCommitFramework
 //
 //  Created by devedbox on 2018/6/30.
 //

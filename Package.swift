@@ -4,15 +4,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "Commit",
+    name: "GitCommit",
     products: [
         .executable(
-            name: "commit",
-            targets: ["commit"]
+            name: "git-commit",
+            targets: ["git-commit"]
         ),
         .library(
-            name: "CommitFramework",
-            targets: ["CommitFramework"]
+            name: "GitCommitFramework",
+            targets: ["GitCommitFramework"]
         )
     ],
     dependencies: [
@@ -24,13 +24,13 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "commit",
-            dependencies: ["CommitFramework"]),
+            name: "git-commit",
+            dependencies: ["GitCommitFramework"]),
         .target(
-            name: "CommitFramework",
+            name: "GitCommitFramework",
             dependencies: ["Yams"]),
         .testTarget(
-            name: "CommitTests",
-            dependencies: ["CommitFramework"]),
+            name: "GitCommitTests",
+            dependencies: ["GitCommitFramework"]),
     ]
 )
