@@ -22,13 +22,23 @@ guard CommandLine.arguments.count >= 2 else {
 let commitsPath = CommandLine.arguments[1]
 let commitsPathUrl = URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/" + commitsPath)
 let originalCommits = try String(contentsOf: commitsPathUrl)
-let commits = originalCommits[...originalCommits.index(before: originalCommits.index(before: originalCommits.endIndex))]
 
-guard !commits.isEmpty else {
+let file = try FileHandle(forReadingFrom: commitsPathUrl)
+defer {
+    file.closeFile()
+}
+
+guard var commits = String(data: file.availableData, encoding: .utf8)
+    , !commits.isEmpty
+else {
     exit(1)
 }
 
-guard try lint(String(commits)) else {
+if commits.hasSuffix("\n") {
+    commits.removeLast()
+}
+
+guard try lint(commits) else {
     exit(1)
 }
 
