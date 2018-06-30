@@ -6,35 +6,50 @@ final class CommitTests: XCTestCase {
         let verbose = false
         var commits = ""
         
-        commits = "feat(SomeScope): This is a commit message."
-        XCTAssertTrue(try lint(commits, verbose: verbose))
-        commits = "fix(SomeBug): This is a commit message."
-        XCTAssertTrue(try lint(commits, verbose: verbose))
-        commits = "docs(Coc): This is a commit message."
-        XCTAssertTrue(try lint(commits, verbose: verbose))
-        commits = "style(CodeStyle): This is a commit message."
-        XCTAssertTrue(try lint(commits, verbose: verbose))
-        commits = "refactor(CodeRefacor): This is a commit message."
-        XCTAssertTrue(try lint(commits, verbose: verbose))
-        commits = "test(UnitTest): This is a commit message."
-        XCTAssertTrue(try lint(commits, verbose: verbose))
-        commits = "chore(AddLibs): This is a commit message."
-        XCTAssertTrue(try lint(commits, verbose: verbose))
+        let asciiCommits = "This is a commit message."
+        let unicodeCommits = "这是一条提交信息。"
         
-        commits = "fea(SomeScope): This is a commit message."
-        XCTAssertFalse(try lint(commits, verbose: verbose))
-        commits = "fixs(SomeBug): This is a commit message."
-        XCTAssertFalse(try lint(commits, verbose: verbose))
-        commits = "doc(Coc): This is a commit message."
-        XCTAssertFalse(try lint(commits, verbose: verbose))
-        commits = "styling(CodeStyle): This is a commit message."
-        XCTAssertFalse(try lint(commits, verbose: verbose))
-        commits = "refacte(CodeRefacor): This is a commit message."
-        XCTAssertFalse(try lint(commits, verbose: verbose))
-        commits = "testing(UnitTest): This is a commit message."
-        XCTAssertFalse(try lint(commits, verbose: verbose))
-        commits = "choring(AddLibs): This is a commit message."
-        XCTAssertFalse(try lint(commits, verbose: verbose))
+        let asciiScope = "SomeScope"
+        let unicudeScope = "提交域"
+        
+        func runTest(for scope: String, with targetCommits: String) {
+            commits = "feat(\(scope)): \(targetCommits)"
+            XCTAssertTrue(try lint(commits, verbose: verbose))
+            commits = "fix(\(scope)): \(targetCommits)"
+            XCTAssertTrue(try lint(commits, verbose: verbose))
+            commits = "docs(\(scope)): \(targetCommits)"
+            XCTAssertTrue(try lint(commits, verbose: verbose))
+            commits = "style(\(scope)): \(targetCommits)"
+            XCTAssertTrue(try lint(commits, verbose: verbose))
+            commits = "refactor(\(scope)): \(targetCommits)"
+            XCTAssertTrue(try lint(commits, verbose: verbose))
+            commits = "test(\(scope)): \(targetCommits)"
+            XCTAssertTrue(try lint(commits, verbose: verbose))
+            commits = "chore(\(scope)): \(targetCommits)"
+            XCTAssertTrue(try lint(commits, verbose: verbose))
+            
+            commits = "fea(\(scope)): \(targetCommits)"
+            XCTAssertFalse(try lint(commits, verbose: verbose))
+            commits = "fixs(\(scope)): \(targetCommits)"
+            XCTAssertFalse(try lint(commits, verbose: verbose))
+            commits = "doc(\(scope)): \(targetCommits)"
+            XCTAssertFalse(try lint(commits, verbose: verbose))
+            commits = "styling(\(scope)): \(targetCommits)"
+            XCTAssertFalse(try lint(commits, verbose: verbose))
+            commits = "refacte(\(scope)): \(targetCommits)"
+            XCTAssertFalse(try lint(commits, verbose: verbose))
+            commits = "testing(\(scope)): \(targetCommits)"
+            XCTAssertFalse(try lint(commits, verbose: verbose))
+            commits = "choring(\(scope)): \(targetCommits)"
+            XCTAssertFalse(try lint(commits, verbose: verbose))
+        }
+        
+        runTest(for: asciiScope, with: asciiCommits)
+        runTest(for: unicudeScope, with: asciiCommits)
+        runTest(for: asciiScope, with: unicodeCommits)
+        runTest(for: unicudeScope, with: unicodeCommits)
+        runTest(for: asciiScope + unicudeScope,
+                with: asciiCommits + unicodeCommits)
     }
     
     func testLintHeaderAndBody() {
