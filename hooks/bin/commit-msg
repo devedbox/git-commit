@@ -23,4 +23,4 @@
 # 	 exit 1
 # }
 
-swift ./Sources/CommitFramework/misc.swift ./Sources/Commit/main.swift $1
+swift run commit $1 --skip-build -c release
