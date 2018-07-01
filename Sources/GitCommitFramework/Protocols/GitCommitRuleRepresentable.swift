@@ -24,5 +24,5 @@ extension RegularExpressionConvertible {
 // MARK: - GitCommitRuleRepresentable.
 
 public protocol GitCommitRuleRepresentable: RegularExpressionConvertible {
-    
+    var isEnabled: Bool { get }
 }

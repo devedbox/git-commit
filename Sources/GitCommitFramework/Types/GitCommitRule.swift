@@ -17,6 +17,7 @@ public struct GitCommitRule: Decodable {
     enum CodingKeys: String, CodingKey {
         case types
         case scope
+        case isEnabled = "enabled"
     }
     
     public struct Scope: Decodable {
@@ -32,6 +33,7 @@ public struct GitCommitRule: Decodable {
     
     public let types: [String]!
     public let scope: Scope!
+    public let isEnabled: Bool
     
     public init(at path: String) throws {
         guard FileManager.default.fileExists(atPath: path) else {
@@ -57,11 +59,12 @@ public struct GitCommitRule: Decodable {
         
         let types = try container.decodeIfPresent([String].self, forKey: CodingKeys.types)
         let scope = try container.decodeIfPresent(Scope.self, forKey: CodingKeys.scope)
+        let isEnabled = try container.decodeIfPresent(Bool.self, forKey: CodingKeys.isEnabled)
         
-        self.init(types: types, scope: scope)
+        self.init(types: types, scope: scope, isEnabled: isEnabled)
     }
     
-    public init(types: [String]? = nil, scope: Scope? = nil) {
+    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool? = nil) {
         if let types = types {
             self.types = types
         } else {
@@ -73,6 +76,8 @@ public struct GitCommitRule: Decodable {
         } else {
             self.scope = Scope(isRequired: false, allowsAsciiPunctuation: false)
         }
+        
+        self.isEnabled = isEnabled ?? true
     }
 }
 
@@ -86,6 +91,10 @@ extension GitCommitRule {
 extension GitCommitRule: GitCommitRuleRepresentable {
     
     public func asRegex() throws -> NSRegularExpression {
+        guard isEnabled else {
+            return try NSRegularExpression(pattern: "^[\\s.]*$", options: [.anchorsMatchLines, .caseInsensitive])
+        }
+        
         let availableCommitTypes = types.joined(separator: "|")
         
         let asciiPunc = AsciiPunctuationPattern

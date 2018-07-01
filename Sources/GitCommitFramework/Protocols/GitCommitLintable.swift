@@ -20,6 +20,9 @@ public protocol GitCommitLintable {
 extension GitCommitLintable {
     @discardableResult
     public func lint(with rule: Rule, options: GitCommitLintOptions = []) throws -> Bool {
+        guard rule.isEnabled else {
+            return true
+        }
         
         let regex = try rule.asRegex()
         

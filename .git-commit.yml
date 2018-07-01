@@ -1,11 +1,12 @@
+enabled: true
 types: # defaults using (feat|fix|docs|style|refactor|test|chore) types.
-  - feat
-  - fix
-  - docs
-  - style
-  - refactor
-  - test
-  - chore
+  - feat # feature
+  - fix # bug fix
+  - docs # documentation
+  - style # formatting, missing semi colons, …
+  - refactor #
+  - test # when adding missing tests
+  - chore # maintain
 scope:
   required: false
   allows-ascii-punctuation: true
