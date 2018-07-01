@@ -23,15 +23,17 @@ public struct GitCommitRule: Decodable {
         
         enum CodingKeys: String, CodingKey {
             case isRequired = "required"
+            case allowsAsciiPunctuation = "allows-ascii-punctuation"
         }
         
         public let isRequired: Bool
+        public let allowsAsciiPunctuation: Bool?
     }
     
     public let types: [String]!
     public let scope: Scope!
     
-    public init(path: String) throws {
+    public init(at path: String) throws {
         guard FileManager.default.fileExists(atPath: path) else {
             throw GitCommitError.invalidConfigPath
         }
@@ -69,7 +71,7 @@ public struct GitCommitRule: Decodable {
         if let scope = scope {
             self.scope = scope
         } else {
-            self.scope = Scope(isRequired: false)
+            self.scope = Scope(isRequired: false, allowsAsciiPunctuation: false)
         }
     }
 }
@@ -77,7 +79,7 @@ public struct GitCommitRule: Decodable {
 extension GitCommitRule {
     
     public static var current: GitCommitRule {
-        return (try? GitCommitRule(path: FileManager.default.currentDirectoryPath + "/.git-commit.yml")) ?? GitCommitRule()
+        return (try? GitCommitRule(at: FileManager.default.currentDirectoryPath + "/.git-commit.yml")) ?? GitCommitRule()
     }
 }
 
@@ -98,7 +100,7 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         let scopeControl = self.scope.isRequired ? "" : "?"
         let typesControl = availableCommitTypes.isEmpty ? "" : ": "
         
-        let scope = "\\(\(contentsWithoutPunc)+\\)"
+        let scope = "\\(\(self.scope.allowsAsciiPunctuation ?? false ? contentsWithAsciiPunc : contentsWithoutPunc)+\\)"
         let subject = "\(contentsWithoutReturn)+"
         let header = "(\(availableCommitTypes))(\(scope))\(scopeControl)\(typesControl)(\(subject))"
         

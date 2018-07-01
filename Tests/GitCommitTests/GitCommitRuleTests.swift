@@ -22,6 +22,30 @@ class GitCommitRuleTests: XCTestCase {
         ("testScopeRequiredCase", testScopeRequiredCase),
     ]
     
+    func testReadConfigFile() {
+        let path = "/Users/devedbox/Library/Mobile Documents/com~apple~CloudDocs/Development/GitCommit/.git-commit.yml"
+        guard FileManager.default.fileExists(atPath: path) else {
+            return
+        }
+        
+        do {
+            let rule = try GitCommitRule(at: path)
+            print(rule)
+            
+            var commits = "This is a commit message."
+            XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule))
+            
+            commits = "chore(GitCommitConfig): This is a commit message."
+            XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+            
+            commits = "chore(.git-commit.yml): This is a commit message."
+            XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+        } catch let error {
+            print(error)
+            XCTAssertFalse(true)
+        }
+    }
+    
     func testRuleConfigurationFile() {
         var config =
         """

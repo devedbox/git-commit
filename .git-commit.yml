@@ -1,4 +1,11 @@
 types: # defaults using (feat|fix|docs|style|refactor|test|chore) types.
-  - 
+  - feat
+  - fix
+  - docs
+  - style
+  - refactor
+  - test
+  - chore
 scope:
   required: false
+  allows-ascii-punctuation: true
