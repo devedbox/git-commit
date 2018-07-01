@@ -11,7 +11,24 @@ import Foundation
 
 final class GitCommitTests: XCTestCase {
     
+    static var allTests = [
+        ("testCommits2String", testCommits2String),
+        ("testInvalidCommitsPath", testInvalidCommitsPath),
+        ("testEmptyCommits", testEmptyCommits),
+        ("testNonEmptyCommits", testNonEmptyCommits),
+        ("testLintSimpleFeatureCommits", testLintSimpleFeatureCommits),
+        ("testRevertCommit", testRevertCommit),
+        ("testLintHeaderAndBody", testLintHeaderAndBody),
+        ("testLintHeaderAndFooter", testLintHeaderAndFooter),
+        ("testLintHeaderAndBodyAndFooter", testLintHeaderAndBodyAndFooter),
+    ]
+    
     let rule = GitCommitRule()
+    
+    func testCommits2String() {
+        let commits = "This is a commit message."
+        XCTAssertEqual(commits, GitCommit(stringLiteral: commits).description)
+    }
     
     func testInvalidCommitsPath() {
         do {
@@ -37,11 +54,37 @@ final class GitCommitTests: XCTestCase {
         }
         
         do {
-            _ = try GitCommit(commitPath: path)
+            _ = try GitCommit(commitPath: "emptyCommits")
         } catch GitCommitError.emptyCommitContents(atPath: _) {
             XCTAssertTrue(true)
         } catch _ {
             XCTAssertFalse(false)
+        }
+    }
+    
+    func testNonEmptyCommits() {
+        let path = FileManager.default.currentDirectoryPath + "/nonEmptyCommits"
+        defer {
+            if FileManager.default.fileExists(atPath: path) {
+                try? FileManager.default.removeItem(atPath: path)
+            }
+        }
+        if !FileManager.default.fileExists(atPath: path) {
+            FileManager.default.createFile(atPath: path,
+                                           contents:
+                                                    """
+                                                    This is a commit message.
+                                                    """.data(using: .utf8),
+                                           attributes: nil)
+        }
+        
+        do {
+            _ = try GitCommit(commitPath: "nonEmptyCommits")
+        } catch GitCommitError.emptyCommitContents(atPath: _) {
+            XCTAssertFalse(true)
+        } catch let error {
+            print(error)
+            XCTAssertFalse(true)
         }
     }
     
@@ -393,14 +436,4 @@ final class GitCommitTests: XCTestCase {
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
     }
-
-    static var allTests = [
-        ("testInvalidCommitsPath", testInvalidCommitsPath),
-        ("testEmptyCommits", testEmptyCommits),
-        ("testLintSimpleFeatureCommits", testLintSimpleFeatureCommits),
-        ("testRevertCommit", testRevertCommit),
-        ("testLintHeaderAndBody", testLintHeaderAndBody),
-        ("testLintHeaderAndFooter", testLintHeaderAndFooter),
-        ("testLintHeaderAndBodyAndFooter", testLintHeaderAndBodyAndFooter),
-    ]
 }

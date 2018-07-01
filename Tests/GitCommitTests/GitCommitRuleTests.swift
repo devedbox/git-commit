@@ -18,9 +18,61 @@ import Yams
 
 class GitCommitRuleTests: XCTestCase {
     static var allTests = [
+        ("testRegex", testRegex),
+        ("testDisable", testDisable),
+        ("testInvalidConfigPath", testInvalidConfigPath),
+        ("testEmptyConfigs", testEmptyConfigs),
+        ("testReadConfigFile", testReadConfigFile),
         ("testRuleConfigurationFile", testRuleConfigurationFile),
+        ("testTypes", testTypes),
         ("testScopeRequiredCase", testScopeRequiredCase),
     ]
+    
+    func testRegex() {
+        let rule = GitCommitRule.current
+        XCTAssertNotNil(rule.regex)
+    }
+    
+    func testDisable() {
+        let rule = GitCommitRule(isEnabled: false)
+        let commits = "This is a commit message."
+        XCTAssertNotNil(rule.regex)
+        XCTAssertEqual(rule.regex!.pattern, "^[\\s.]*$")
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+    }
+    
+    func testInvalidConfigPath() {
+        let path = "invalid"
+        do {
+            _ = try GitCommitRule(at: path)
+        } catch GitCommitError.invalidConfigPath {
+            XCTAssertTrue(true)
+        } catch _ {
+            XCTAssertFalse(true)
+        }
+    }
+    
+    func testEmptyConfigs() {
+        let path = FileManager.default.currentDirectoryPath + "/emptyConfigs"
+        defer {
+            if FileManager.default.fileExists(atPath: path) {
+                try? FileManager.default.removeItem(atPath: path)
+            }
+        }
+        if !FileManager.default.fileExists(atPath: path) {
+            FileManager.default.createFile(atPath: path,
+                                           contents: nil,
+                                           attributes: nil)
+        }
+        
+        do {
+            _ = try GitCommitRule(at: path)
+        } catch GitCommitError.emptyConfigContents(atPath: _) {
+            XCTAssertTrue(true)
+        } catch _ {
+            XCTAssertFalse(false)
+        }
+    }
     
     func testReadConfigFile() {
         let path = "/Users/devedbox/Library/Mobile Documents/com~apple~CloudDocs/Development/GitCommit/.git-commit.yml"
@@ -92,6 +144,7 @@ class GitCommitRuleTests: XCTestCase {
     func testTypes() {
         var config =
         """
+        enabled: true
         types:
           -
         """
@@ -109,6 +162,7 @@ class GitCommitRuleTests: XCTestCase {
         
         config =
         """
+        enabled: true
         types:
           - feat
         """
@@ -130,6 +184,7 @@ class GitCommitRuleTests: XCTestCase {
         
         config =
         """
+        enabled: true
         types:
           - feat
           - fix
@@ -163,6 +218,7 @@ class GitCommitRuleTests: XCTestCase {
     func testScopeRequiredCase() {
         var config =
         """
+        enabled: true
         scope:
           required: false
         """
@@ -179,6 +235,7 @@ class GitCommitRuleTests: XCTestCase {
         
         config =
         """
+        enabled: true
         scope:
           required: true
         """

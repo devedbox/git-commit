@@ -59,12 +59,12 @@ public struct GitCommitRule: Decodable {
         
         let types = try container.decodeIfPresent([String].self, forKey: CodingKeys.types)
         let scope = try container.decodeIfPresent(Scope.self, forKey: CodingKeys.scope)
-        let isEnabled = try container.decodeIfPresent(Bool.self, forKey: CodingKeys.isEnabled)
+        let isEnabled = try container.decode(Bool.self, forKey: CodingKeys.isEnabled)
         
         self.init(types: types, scope: scope, isEnabled: isEnabled)
     }
     
-    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool? = nil) {
+    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true) {
         if let types = types {
             self.types = types
         } else {
@@ -77,7 +77,7 @@ public struct GitCommitRule: Decodable {
             self.scope = Scope(isRequired: false, allowsAsciiPunctuation: false)
         }
         
-        self.isEnabled = isEnabled ?? true
+        self.isEnabled = isEnabled
     }
 }
 
