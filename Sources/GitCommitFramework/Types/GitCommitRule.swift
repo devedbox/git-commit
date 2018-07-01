@@ -33,7 +33,10 @@ public struct GitCommitRule: GitCommitRuleRepresentable {
         let closingIssue = "(Closes \(contentsWithAsciiPunc)+)"
         let footer = "(\\n\\n(\(breakingChange)|\(closingIssue)))?"
         
-        let pattern = "^\(header)\(body)\(footer)$"
+        let revert = "revert: \(header)\\n{2}This reverts commit [A-Za-z0-9\(asciiPunc)]+"
+        let commit = "\(header)\(body)\(footer)"
+        
+        let pattern = "^(\(revert)|\(commit))$"
         
         return try NSRegularExpression(pattern: pattern, options: [.anchorsMatchLines, .caseInsensitive])
     }

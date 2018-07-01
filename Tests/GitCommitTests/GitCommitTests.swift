@@ -88,6 +88,62 @@ final class GitCommitTests: XCTestCase {
                 with: asciiCommits + unicodeCommits)
     }
     
+    func testRevertCommit() {
+        let options: GitCommitLintOptions = [.verbose]
+        var commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
+
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        """
+        
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
+        
+        
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
+
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
+        
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        The second part.
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
+        
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        
+        The second part.
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+    }
+    
     func testLintHeaderAndBody() {
         let options: GitCommitLintOptions = [.verbose]
         var commits = ""
@@ -332,7 +388,10 @@ final class GitCommitTests: XCTestCase {
     }
 
     static var allTests = [
+        ("testInvalidCommitsPath", testInvalidCommitsPath),
+        ("testEmptyCommits", testEmptyCommits),
         ("testLintSimpleFeatureCommits", testLintSimpleFeatureCommits),
+        ("testRevertCommit", testRevertCommit),
         ("testLintHeaderAndBody", testLintHeaderAndBody),
         ("testLintHeaderAndFooter", testLintHeaderAndFooter),
         ("testLintHeaderAndBodyAndFooter", testLintHeaderAndBodyAndFooter),
