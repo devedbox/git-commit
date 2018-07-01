@@ -1,9 +1,42 @@
 import XCTest
+import Foundation
 @testable import GitCommitFramework
 
 final class GitCommitTests: XCTestCase {
     
     let rule = GitCommitRule()
+    
+    func testInvalidCommitsPath() {
+        do {
+            _ = try GitCommit(commitPath: "invalid")
+        } catch GitCommitError.invalidCommitPath {
+            XCTAssertTrue(true)
+        } catch _ {
+            XCTAssertFalse(false)
+        }
+    }
+    
+    func testEmptyCommits() {
+        let path = FileManager.default.currentDirectoryPath + "/emptyCommits"
+        defer {
+            if FileManager.default.fileExists(atPath: path) {
+                try? FileManager.default.removeItem(atPath: path)
+            }
+        }
+        if !FileManager.default.fileExists(atPath: path) {
+            FileManager.default.createFile(atPath: path,
+                                           contents: nil,
+                                           attributes: nil)
+        }
+        
+        do {
+            _ = try GitCommit(commitPath: path)
+        } catch GitCommitError.emptyCommitContents(atPath: _) {
+            XCTAssertTrue(true)
+        } catch _ {
+            XCTAssertFalse(false)
+        }
+    }
     
     func testLintSimpleFeatureCommits() {
         let options: GitCommitLintOptions = [.verbose]
