@@ -6,16 +6,88 @@
 //
 
 import Foundation
+import Yams
 
-public struct GitCommitRule: GitCommitRuleRepresentable {
+private let AsciiPunctuationPattern = NSRegularExpression.escapedPattern(for: "`~!@#$%^&*()_+-=\\{}|;':\",./<>?") + "\\[\\]"
+private let UnicodePunctuationPattern = NSRegularExpression.escapedPattern(for: "·~！@#￥%……&*（）——+-=【】、；‘：“，。、《》？")
+private let PunctuationPattern = AsciiPunctuationPattern + UnicodePunctuationPattern
+
+public struct GitCommitRule: Decodable {
     
-    public init() { }
+    enum CodingKeys: String, CodingKey {
+        case types
+        case scope
+    }
+    
+    public struct Scope: Decodable {
+        
+        enum CodingKeys: String, CodingKey {
+            case isRequired = "required"
+        }
+        
+        public let isRequired: Bool
+    }
+    
+    public let types: [String]!
+    public let scope: Scope!
+    
+    public init(path: String) throws {
+        guard FileManager.default.fileExists(atPath: path) else {
+            throw GitCommitError.invalidConfigPath
+        }
+        
+        let pathUrl = URL(fileURLWithPath: path)
+        let file = try FileHandle(forReadingFrom: pathUrl)
+        defer {
+            file.closeFile()
+        }
+        
+        let data = file.readDataToEndOfFile()
+        guard !data.isEmpty, let config = String(data: data, encoding: .utf8)  else {
+            throw GitCommitError.emptyConfigContents(atPath: path)
+        }
+        
+        self = try YAMLDecoder().decode(type(of: self), from: config)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let types = try container.decodeIfPresent([String].self, forKey: CodingKeys.types)
+        let scope = try container.decodeIfPresent(Scope.self, forKey: CodingKeys.scope)
+        
+        self.init(types: types, scope: scope)
+    }
+    
+    public init(types: [String]? = nil, scope: Scope? = nil) {
+        if let types = types {
+            self.types = types
+        } else {
+            self.types = GitCommitType.all.map { $0.rawValue }
+        }
+        
+        if let scope = scope {
+            self.scope = scope
+        } else {
+            self.scope = Scope(isRequired: false)
+        }
+    }
+}
+
+extension GitCommitRule {
+    
+    public static var current: GitCommitRule {
+        return (try? GitCommitRule(path: FileManager.default.currentDirectoryPath + "/.git-commit.yml")) ?? GitCommitRule()
+    }
+}
+
+extension GitCommitRule: GitCommitRuleRepresentable {
     
     public func asRegex() throws -> NSRegularExpression {
-        let availableCommitTypes = GitCommitType.all.map { $0.rawValue }.joined(separator: "|")
+        let availableCommitTypes = types.joined(separator: "|")
         
-        let asciiPunc = NSRegularExpression.escapedPattern(for: "`~!@#$%^&*()_+-=\\{}|;':\",./<>?") + "\\[\\]"
-        let unicodePunc = NSRegularExpression.escapedPattern(for: "·~！@#￥%……&*（）——+-=【】、；‘：“，。、《》？")
+        let asciiPunc = AsciiPunctuationPattern
+        let unicodePunc = UnicodePunctuationPattern
         let punctuation = asciiPunc + unicodePunc
         
         let contentsWithoutPunc = "[\u{4E00}-\u{9FA5}A-Za-z0-9_]"
@@ -23,9 +95,12 @@ public struct GitCommitRule: GitCommitRuleRepresentable {
         let contentsWithoutReturn = "[\u{4E00}-\u{9FA5}A-Za-z0-9\(punctuation) ]"
         let contentsWithReturn = "[\\n" + contentsWithoutReturn[contentsWithoutReturn.index(after: contentsWithoutReturn.startIndex)...]
         
+        let scopeControl = self.scope.isRequired ? "" : "?"
+        let typesControl = availableCommitTypes.isEmpty ? "" : ": "
+        
         let scope = "\\(\(contentsWithoutPunc)+\\)"
         let subject = "\(contentsWithoutReturn)+"
-        let header = "(\(availableCommitTypes))(\(scope))*: (\(subject))"
+        let header = "(\(availableCommitTypes))(\(scope))\(scopeControl)\(typesControl)(\(subject))"
         
         let body = "((\\n{1,2}\(contentsWithoutReturn)+)+)?"
         

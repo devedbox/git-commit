@@ -13,4 +13,9 @@ public enum GitCommitError: Error {
     case invalidCommitPath
     /// Indicates the commits content of the given path is empty.
     case emptyCommitContents(atPath: String)
+    
+    /// Indicates the path of the configuration is invalid.
+    case invalidConfigPath
+    /// Indicates the commits content of the given path is empty.
+    case emptyConfigContents(atPath: String)
 }

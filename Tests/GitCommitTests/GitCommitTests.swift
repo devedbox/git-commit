@@ -1,3 +1,10 @@
+//
+//  GitCommitTests.swift
+//  GitCommitTests
+//
+//  Created by devedbox on 2018/7/1.
+//
+
 import XCTest
 import Foundation
 @testable import GitCommitFramework
