@@ -1,4 +1,4 @@
-types: defaults using (feat|fix|docs|style|refactor|test|chore) types.
+types: # defaults using (feat|fix|docs|style|refactor|test|chore) types.
   - 
 scope:
   required: false

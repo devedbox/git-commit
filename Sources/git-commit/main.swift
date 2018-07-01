@@ -19,7 +19,9 @@ guard CommandLine.arguments.count >= 2 else {
 }
 
 do {
-    try GitCommit(commitPath: CommandLine.arguments[1]).lint(with: .current)
+    guard try GitCommit(commitPath: CommandLine.arguments[1]).lint(with: .current) else {
+        exit(1)
+    }
 } catch let error {
     switch error {
     case GitCommitError.emptyCommitContents(atPath: let path):
