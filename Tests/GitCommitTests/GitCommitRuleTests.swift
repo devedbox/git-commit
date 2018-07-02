@@ -17,6 +17,10 @@ import Yams
 @testable import GitCommitFramework
 
 internal struct TestIsEnabledGitCommitRule: GitCommitRuleRepresentable {
+    var debugDescription: String {
+        return ""
+    }
+    
     func asRegex() throws -> NSRegularExpression {
         return try NSRegularExpression(pattern: "", options: [])
     }

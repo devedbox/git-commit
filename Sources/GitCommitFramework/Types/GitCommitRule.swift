@@ -95,6 +95,18 @@ extension GitCommitRule {
 
 extension GitCommitRule: GitCommitRuleRepresentable {
     
+    public var debugDescription: String {
+        return """
+        <type>(<scope>): <subject> | (\(types.joined(separator: "|"))(SomeScope): This is a commit message.
+        <BLANK LINE>               |
+        <body>                     | <Optional>: This is a commit body.
+        <BLANK LINE>               |
+        <footer>                   | <(BREAKING CHANGE: isolate scope bindings definition has changed.)|(Closes #123, #245, #992)>
+        
+        Seek for more? Click -> https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit
+        """
+    }
+    
     public func isEnabled(for commits: String) -> Bool {
         
         if let ignoring = ignoringPattern, let ignoringRegex = try? NSRegularExpression(pattern: ignoring, options: RegexOptions) {

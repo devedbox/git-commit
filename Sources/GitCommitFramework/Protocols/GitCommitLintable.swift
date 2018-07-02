@@ -44,9 +44,15 @@ extension GitCommitLintable {
             """
             
             Commit message:
-            ------------------------
+            """)
+            echo(.default, message:
+            """
+            
             \(commits)
-            ------------------------
+            
+            """)
+            echo(.error, message:
+            """
             did not pass validate!!!
             """)
             echo(.warning, message:
@@ -56,7 +62,7 @@ extension GitCommitLintable {
             Please check and follow the commit pattern:
             -------------------------------------------
             """)
-            echo(.notes, message: "\n\(CommitFormater)\n")
+            echo(.notes, message: "\n\(rule.debugDescription)\n")
             return false
         }
         

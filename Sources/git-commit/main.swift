@@ -14,7 +14,7 @@ import Darwin
 import GitCommitFramework
 
 guard CommandLine.arguments.count >= 2 else {
-    echo(.warning, message: "\nThere is no commits.\n")
+    echo(.warning, message: "\nInvalid count of arguments.\n")
     exit(1)
 }
 
