@@ -25,4 +25,13 @@ extension RegularExpressionConvertible {
 
 public protocol GitCommitRuleRepresentable: RegularExpressionConvertible {
     var isEnabled: Bool { get }
+    
+    func isEnabled(for commits: String) -> Bool
+}
+
+extension GitCommitRuleRepresentable {
+    
+    public func isEnabled(for commits: String) -> Bool {
+        return isEnabled
+    }
 }

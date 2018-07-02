@@ -16,16 +16,26 @@ import Foundation
 import Yams
 @testable import GitCommitFramework
 
+internal struct TestIsEnabledGitCommitRule: GitCommitRuleRepresentable {
+    func asRegex() throws -> NSRegularExpression {
+        return try NSRegularExpression(pattern: "", options: [])
+    }
+    
+    internal var isEnabled: Bool
+}
+
 class GitCommitRuleTests: XCTestCase {
     static var allTests = [
         ("testRegex", testRegex),
         ("testDisable", testDisable),
+        ("testIgnoringPattern", testIgnoringPattern),
         ("testInvalidConfigPath", testInvalidConfigPath),
         ("testEmptyConfigs", testEmptyConfigs),
         ("testReadConfigFile", testReadConfigFile),
         ("testRuleConfigurationFile", testRuleConfigurationFile),
         ("testTypes", testTypes),
         ("testScopeRequiredCase", testScopeRequiredCase),
+        ("testDefaultIsEnabled", testDefaultIsEnabled),
     ]
     
     func testRegex() {
@@ -39,6 +49,32 @@ class GitCommitRuleTests: XCTestCase {
         XCTAssertNotNil(rule.regex)
         XCTAssertEqual(rule.regex!.pattern, "^[\\s.]*$")
         XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+    }
+    
+    func testIgnoringPattern() {
+        let ignoring = "^(MRE-[0-9]+ Automatically bump build number to [0-9]+)$"
+        
+        let rule = GitCommitRule(ignoringPattern: "\(ignoring)")
+        let commits = "MRE-20 Automatically bump build number to 1182"
+        XCTAssertFalse(rule.isEnabled(for: commits))
+        XCTAssertNotNil(rule.ignoringPattern)
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+        
+        let config =
+        """
+        enabled: true
+        ignoring-pattern: ^(MRE-[0-9]+ Automatically bump build number to [0-9]+)$
+        """
+        
+        do {
+            let rule = try YAMLDecoder().decode(GitCommitRule.self, from: config)
+            XCTAssertFalse(rule.scope.isRequired)
+            XCTAssertEqual(rule.ignoringPattern, ignoring)
+            
+            XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+        } catch _ {
+            XCTAssertFalse(true)
+        }
     }
     
     func testInvalidConfigPath() {
@@ -249,5 +285,11 @@ class GitCommitRuleTests: XCTestCase {
         } catch _ {
             XCTAssertFalse(true)
         }
+    }
+    
+    func testDefaultIsEnabled() {
+        let rule = TestIsEnabledGitCommitRule(isEnabled: false)
+        XCTAssertFalse(rule.isEnabled)
+        XCTAssertEqual(rule.isEnabled, rule.isEnabled(for: "test"))
     }
 }

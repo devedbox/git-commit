@@ -20,7 +20,7 @@ public protocol GitCommitLintable {
 extension GitCommitLintable {
     @discardableResult
     public func lint(with rule: Rule, options: GitCommitLintOptions = []) throws -> Bool {
-        guard rule.isEnabled else {
+        guard rule.isEnabled(for: commits) else {
             return true
         }
         

@@ -11,6 +11,7 @@ import Yams
 private let AsciiPunctuationPattern = NSRegularExpression.escapedPattern(for: "`~!@#$%^&*()_+-=\\{}|;':\",./<>?") + "\\[\\]"
 private let UnicodePunctuationPattern = NSRegularExpression.escapedPattern(for: "·~！@#￥%……&*（）——+-=【】、；‘：“，。、《》？")
 private let PunctuationPattern = AsciiPunctuationPattern + UnicodePunctuationPattern
+private let RegexOptions: NSRegularExpression.Options = [.anchorsMatchLines, .caseInsensitive]
 
 public struct GitCommitRule: Decodable {
     
@@ -18,6 +19,7 @@ public struct GitCommitRule: Decodable {
         case types
         case scope
         case isEnabled = "enabled"
+        case ignoringPattern = "ignoring-pattern"
     }
     
     public struct Scope: Decodable {
@@ -33,7 +35,8 @@ public struct GitCommitRule: Decodable {
     
     public let types: [String]!
     public let scope: Scope!
-    public let isEnabled: Bool
+    public var isEnabled: Bool
+    public let ignoringPattern: String?
     
     public init(at path: String) throws {
         guard FileManager.default.fileExists(atPath: path) else {
@@ -60,11 +63,12 @@ public struct GitCommitRule: Decodable {
         let types = try container.decodeIfPresent([String].self, forKey: CodingKeys.types)
         let scope = try container.decodeIfPresent(Scope.self, forKey: CodingKeys.scope)
         let isEnabled = try container.decode(Bool.self, forKey: CodingKeys.isEnabled)
+        let ignoringPattern = try container.decodeIfPresent(String.self, forKey: CodingKeys.ignoringPattern)
         
-        self.init(types: types, scope: scope, isEnabled: isEnabled)
+        self.init(types: types, scope: scope, isEnabled: isEnabled, ignoringPattern: ignoringPattern)
     }
     
-    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true) {
+    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true, ignoringPattern: String? = nil) {
         if let types = types {
             self.types = types
         } else {
@@ -78,6 +82,7 @@ public struct GitCommitRule: Decodable {
         }
         
         self.isEnabled = isEnabled
+        self.ignoringPattern = ignoringPattern
     }
 }
 
@@ -90,9 +95,27 @@ extension GitCommitRule {
 
 extension GitCommitRule: GitCommitRuleRepresentable {
     
+    public func isEnabled(for commits: String) -> Bool {
+        
+        if let ignoring = ignoringPattern, let ignoringRegex = try? NSRegularExpression(pattern: ignoring, options: RegexOptions) {
+            
+            let range = (commits as NSString).range(of: commits)
+            let matchs = ignoringRegex.matches(in: commits,
+                                               options: [.anchored],
+                                               range: range)
+            
+            if matchs.count == 1, case let match? = matchs.last, match.range == range {
+                return false
+            }
+        }
+        
+        return isEnabled
+    }
+    
     public func asRegex() throws -> NSRegularExpression {
+        
         guard isEnabled else {
-            return try NSRegularExpression(pattern: "^[\\s.]*$", options: [.anchorsMatchLines, .caseInsensitive])
+            return try NSRegularExpression(pattern: "^[\\s.]*$", options: RegexOptions)
         }
         
         let availableCommitTypes = types.joined(separator: "|")
@@ -124,6 +147,6 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         
         let pattern = "^(\(revert)|\(commit))$"
         
-        return try NSRegularExpression(pattern: pattern, options: [.anchorsMatchLines, .caseInsensitive])
+        return try NSRegularExpression(pattern: pattern, options: RegexOptions)
     }
 }
