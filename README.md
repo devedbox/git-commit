@@ -1,3 +1,3 @@
-# Commit
+# GitCommit
 
 A description of this package.
