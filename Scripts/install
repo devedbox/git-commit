@@ -1,0 +1,6 @@
+#!bin/sh
+
+swift package clean
+swift test
+siwft build -c release -Xswiftc -static-stdlib
+cp ./.build/release/git-commit /usr/local/bin/git-commit
