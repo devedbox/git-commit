@@ -146,7 +146,7 @@
 		DC2CC2F920E8A59100A5E30D /* GitCommitRuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRuleTests.swift; sourceTree = "<group>"; };
 		"GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GitCommitFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"GitCommit::GitCommitTests::Product" /* GitCommitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GitCommitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"GitCommit::git-commit::Product" /* git-commit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "git-commit"; sourceTree = BUILT_PRODUCTS_DIR; };
+		"GitCommit::git-commit::Product" /* git-commit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = "git-commit"; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* GitCommitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitError.swift; sourceTree = "<group>"; };
 		OBJ_14 /* GitCommitLintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitLintable.swift; sourceTree = "<group>"; };
 		OBJ_15 /* GitCommitRuleRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRuleRepresentable.swift; sourceTree = "<group>"; };
@@ -851,11 +851,12 @@
 					"$(SRCROOT)/.build/checkouts/Yams.git-8068124914099325722/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
-				INFOPLIST_FILE = GitCommit.xcodeproj/git_commit_Info.plist;
+				INFOPLIST_FILE = "GitCommit.xcodeproj/git-commit_Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = "git-commit";
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_VERSION = 4.0;
@@ -875,11 +876,12 @@
 					"$(SRCROOT)/.build/checkouts/Yams.git-8068124914099325722/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
-				INFOPLIST_FILE = GitCommit.xcodeproj/git_commit_Info.plist;
+				INFOPLIST_FILE = "GitCommit.xcodeproj/git-commit_Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = "git-commit";
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_VERSION = 4.0;

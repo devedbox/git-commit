@@ -9,6 +9,11 @@ types: # defaults using (feat|fix|docs|style|refactor|test|chore) types.
   - refactor #
   - test # when adding missing tests
   - chore # maintain
+  - release
+  - merge
+  - tag
+  - branch
 scope:
   required: false
   allows-ascii-punctuation: true
+  
