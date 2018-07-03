@@ -153,8 +153,8 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         let punctuation = asciiPunc + unicodePunc
         
         let contentsWithoutPunc = "[\u{4E00}-\u{9FA5}A-Za-z0-9_]"
-        let contentsWithAsciiPunc = "[A-Za-z0-9\(asciiPunc) ]"
-        let contentsWithoutReturn = "[\u{4E00}-\u{9FA5}A-Za-z0-9\(punctuation) ]"
+        let contentsWithAsciiPunc = "[A-Za-z0-9\(asciiPunc) \\t]"
+        let contentsWithoutReturn = "[\u{4E00}-\u{9FA5}A-Za-z0-9\(punctuation) \\t]"
         
         let scopeControl = self.scope.isRequired ? "" : "?"
         let typesControl = availableCommitTypes.isEmpty ? "" : ": "

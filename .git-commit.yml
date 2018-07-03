@@ -1,6 +1,6 @@
 enabled: true
 ignoring-pattern: ^(MRE-[0-9]+ Automatically bump build number to [0-9]+)$
-ignores-hash-anchored-lines: true
+# ignores-hash-anchored-lines: true
 types: # defaults using (feat|fix|docs|style|refactor|test|chore) types.
   - feat # feature
   - fix # bug fix

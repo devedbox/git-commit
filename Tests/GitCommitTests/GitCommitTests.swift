@@ -59,23 +59,16 @@ final class GitCommitTests: XCTestCase {
         }
         
         commits = """
-        feat: This is a commit message.
-        
-        This is a commit.
-        
-        Closes #111
+        test(Ignores): Test disable ignores-hash-anchored-lines.
         
         # Please enter the commit message for your changes. Lines starting
         # with '#' will be ignored, and an empty message aborts the commit.
         #
         # On branch master
         # Changes to be committed:
-        #       modified:   GitCommit.xcodeproj/project.xcworkspace/xcuserdata/devedbox.xcuserdatad/UserInterfaceState.xcuserstate
-        #       modified:   Sources/GitCommitFramework/Protocols/GitCommitLintable.swift
-        #       modified:   Sources/GitCommitFramework/Protocols/GitCommitRuleRepresentable.swift
-        #       modified:   Sources/GitCommitFramework/Types/GitCommitRule.swift
-        #       modified:   Tests/GitCommitTests/GitCommitRuleTests.swift
-        
+        #\tmodified:   .git-commit.yml
+        #\tmodified:   GitCommit.xcodeproj/project.xcworkspace/xcuserdata/devedbox.xcuserdatad/UserInterfaceState.xcuserstate
+        #
         """
         
         if !FileManager.default.fileExists(atPath: path) {
@@ -83,7 +76,6 @@ final class GitCommitTests: XCTestCase {
                                            contents: commits.data(using: .utf8),
                                            attributes: nil)
         }
-        
         XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: rule))
     }
     

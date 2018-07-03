@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tests/GitCommitTests/GitCommitTests.swift"
-            timestampString = "552295955.96698"
+            timestampString = "552297891.9164439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -57,46 +57,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tests/GitCommitTests/GitCommitTests.swift"
-            timestampString = "552295955.967092"
+            filePath = "Sources/GitCommitFramework/Types/GitCommit.swift"
+            timestampString = "552297891.916617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "testReadFromFile()"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "init(commitPath:isAbsolutePath:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GitCommitTests.GitCommitTests.testReadFromFile() -&gt; ()"
-                  moduleName = "GitCommitTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devedbox/Library/Mobile%20Documents/com~apple~CloudDocs/Development/GitCommit/Tests/GitCommitTests/GitCommitTests.swift"
-                  timestampString = "552292912.970683"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "3336">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #2 : @autoclosure () throws -&gt; Swift.Bool in GitCommitTests.GitCommitTests.testReadFromFile() -&gt; ()"
-                  moduleName = "GitCommitTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devedbox/Library/Mobile%20Documents/com~apple~CloudDocs/Development/GitCommit/Tests/GitCommitTests/GitCommitTests.swift"
-                  timestampString = "552292912.9754339"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "45">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/GitCommitFramework/Types/GitCommit.swift"
+            timestampString = "552297891.91671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "init(commitPath:isAbsolutePath:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

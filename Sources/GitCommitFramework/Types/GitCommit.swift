@@ -16,8 +16,8 @@ public struct GitCommit: GitCommitLintable {
     public var commits: String { return _commits }
     
     /// Creates an instance of `GitCommit` with the given commit path.
-    public init(commitPath: String) throws {
-        let path = FileManager.default.currentDirectoryPath + "/" + commitPath
+    public init(commitPath: String, isAbsolutePath: Bool = false) throws {
+        let path = (isAbsolutePath ? "" : FileManager.default.currentDirectoryPath + "/") + commitPath
         
         guard FileManager.default.fileExists(atPath: path) else {
             throw GitCommitError.invalidCommitPath
