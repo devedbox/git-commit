@@ -20,6 +20,7 @@ public struct GitCommitRule: Decodable {
         case scope
         case isEnabled = "enabled"
         case ignoringPattern = "ignoring-pattern"
+        case ignoresHashAnchoredLines = "ignores-hash-anchored-lines"
     }
     
     public struct Scope: Decodable {
@@ -37,6 +38,7 @@ public struct GitCommitRule: Decodable {
     public let scope: Scope!
     public var isEnabled: Bool
     public let ignoringPattern: String?
+    public let ignoresHashAnchoredLines: Bool?
     
     public init(at path: String) throws {
         guard FileManager.default.fileExists(atPath: path) else {
@@ -64,11 +66,12 @@ public struct GitCommitRule: Decodable {
         let scope = try container.decodeIfPresent(Scope.self, forKey: CodingKeys.scope)
         let isEnabled = try container.decode(Bool.self, forKey: CodingKeys.isEnabled)
         let ignoringPattern = try container.decodeIfPresent(String.self, forKey: CodingKeys.ignoringPattern)
+        let ignoresHashAnchoredLines = try container.decodeIfPresent(Bool.self, forKey: CodingKeys.ignoresHashAnchoredLines)
         
-        self.init(types: types, scope: scope, isEnabled: isEnabled, ignoringPattern: ignoringPattern)
+        self.init(types: types, scope: scope, isEnabled: isEnabled, ignoringPattern: ignoringPattern, ignoresHashAnchoredLines: ignoresHashAnchoredLines)
     }
     
-    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true, ignoringPattern: String? = nil) {
+    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true, ignoringPattern: String? = nil, ignoresHashAnchoredLines: Bool? = nil) {
         if let types = types {
             self.types = types
         } else {
@@ -83,6 +86,7 @@ public struct GitCommitRule: Decodable {
         
         self.isEnabled = isEnabled
         self.ignoringPattern = ignoringPattern
+        self.ignoresHashAnchoredLines = ignoresHashAnchoredLines
     }
 }
 
@@ -105,6 +109,18 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         
         Seek for more? Click -> https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit
         """
+    }
+    
+    public func map(commits: String) -> String {
+        guard let ignoresHashAnchoredLines = self.ignoresHashAnchoredLines, ignoresHashAnchoredLines else {
+            return commits
+        }
+        
+        // Tripping the hash(`#`) anchored lines if any.
+        return
+            commits.components(separatedBy: CharacterSet.newlines)
+                .filter { !$0.hasPrefix("#") }
+                .joined(separator: "\n")
     }
     
     public func isEnabled(for commits: String) -> Bool {
@@ -139,7 +155,6 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         let contentsWithoutPunc = "[\u{4E00}-\u{9FA5}A-Za-z0-9_]"
         let contentsWithAsciiPunc = "[A-Za-z0-9\(asciiPunc) ]"
         let contentsWithoutReturn = "[\u{4E00}-\u{9FA5}A-Za-z0-9\(punctuation) ]"
-        let contentsWithReturn = "[\\n" + contentsWithoutReturn[contentsWithoutReturn.index(after: contentsWithoutReturn.startIndex)...]
         
         let scopeControl = self.scope.isRequired ? "" : "?"
         let typesControl = availableCommitTypes.isEmpty ? "" : ": "
@@ -150,9 +165,9 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         
         let body = "((\\n{1,2}\(contentsWithoutReturn)+)+)?"
         
-        let breakingChange = "(BREAKING CHANGE: \(contentsWithReturn)+)"
+        let breakingChange = "(BREAKING CHANGE: (\\n{0,2}\(contentsWithoutReturn))+)"
         let closingIssue = "(Closes \(contentsWithAsciiPunc)+)"
-        let footer = "(\\n\\n(\(breakingChange)|\(closingIssue)))?"
+        let footer = "(\\n{2}(\(breakingChange)|\(closingIssue)))?"
         
         let revert = "revert: \(header)\\n{2}This reverts commit [A-Za-z0-9\(asciiPunc)]+"
         let commit = "\(header)\(body)\(footer)"

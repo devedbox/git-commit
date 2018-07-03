@@ -12,6 +12,7 @@ import Foundation
 final class GitCommitTests: XCTestCase {
     
     static var allTests = [
+        ("testReadFromFile", testReadFromFile),
         ("testCommits2String", testCommits2String),
         ("testInvalidCommitsPath", testInvalidCommitsPath),
         ("testEmptyCommits", testEmptyCommits),
@@ -24,6 +25,67 @@ final class GitCommitTests: XCTestCase {
     ]
     
     let rule = GitCommitRule()
+    
+    func testReadFromFile() {
+        let path = FileManager.default.currentDirectoryPath + "/commits"
+        defer {
+            if FileManager.default.fileExists(atPath: path) {
+                try? FileManager.default.removeItem(atPath: path)
+            }
+        }
+        
+        if FileManager.default.fileExists(atPath: path) {
+            try? FileManager.default.removeItem(atPath: path)
+        }
+        
+        var commits = """
+        feat(SomeFeature): This is a message.
+        
+        The first line of specific message.
+        The second line of specific message.
+        
+        """
+        
+        if !FileManager.default.fileExists(atPath: path) {
+            FileManager.default.createFile(atPath: path,
+                                           contents: commits.data(using: .utf8),
+                                           attributes: nil)
+        }
+        
+        XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: rule))
+        
+        if FileManager.default.fileExists(atPath: path) {
+            try? FileManager.default.removeItem(atPath: path)
+        }
+        
+        commits = """
+        feat: This is a commit message.
+        
+        This is a commit.
+        
+        Closes #111
+        
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        #       modified:   GitCommit.xcodeproj/project.xcworkspace/xcuserdata/devedbox.xcuserdatad/UserInterfaceState.xcuserstate
+        #       modified:   Sources/GitCommitFramework/Protocols/GitCommitLintable.swift
+        #       modified:   Sources/GitCommitFramework/Protocols/GitCommitRuleRepresentable.swift
+        #       modified:   Sources/GitCommitFramework/Types/GitCommitRule.swift
+        #       modified:   Tests/GitCommitTests/GitCommitRuleTests.swift
+        
+        """
+        
+        if !FileManager.default.fileExists(atPath: path) {
+            FileManager.default.createFile(atPath: path,
+                                           contents: commits.data(using: .utf8),
+                                           attributes: nil)
+        }
+        
+        XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: rule))
+    }
     
     func testCommits2String() {
         let commits = "This is a commit message."
@@ -152,6 +214,21 @@ final class GitCommitTests: XCTestCase {
         commits =
         """
         revert: feat(pencil): add 'graphiteWidth' option
+        
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        """
+        
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
         This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
@@ -210,6 +287,21 @@ final class GitCommitTests: XCTestCase {
         commits = """
         feat(SomeFeature): This is a message.
         
+        The first line of specific message.
+        The second line of specific message.
+        
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        """
+        
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
         
         The first line of specific message.
         The second line of specific message.
@@ -220,9 +312,41 @@ final class GitCommitTests: XCTestCase {
         commits = """
         feat(SomeFeature): This is a message.
         
+        
+        The first line of specific message.
+        The second line of specific message.
+        
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        """
+        
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
         The first line of specific message.
         
         The second line of specific message.
+        """
+        
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
+        The first line of specific message.
+        
+        The second line of specific message.
+        
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
         """
         
         XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
@@ -242,6 +366,23 @@ final class GitCommitTests: XCTestCase {
         The first line of specific message.
         The second line of specific message.
         
+        
+        
+        
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
+        The first line of specific message.
+        The second line of specific message.
+        
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
         
         
         
@@ -270,6 +411,24 @@ final class GitCommitTests: XCTestCase {
         feat(SomeFeature): This is a message.
         
         BREAKING CHANGE: isolate scope bindings definition has changed.
+        To migrate the code follow the example below:
+        Before:
+        sample1
+        After:
+        sample2
+        The removed `inject` wasn't generaly useful for directives so there should be no code using it.
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        """
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
+        BREAKING CHANGE: isolate scope bindings definition has changed.
         
         To migrate the code follow the example below:
         
@@ -303,6 +462,61 @@ final class GitCommitTests: XCTestCase {
         The removed `inject` wasn't generaly useful for directives so there should be no code using it.
         
         
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
+        BREAKING CHANGE: isolate scope bindings definition has changed.
+        
+        To migrate the code follow the example below:
+        
+        Before:
+        
+        sample1
+        
+        After:
+        
+        sample2
+        
+        The removed `inject` wasn't generaly useful for directives so there should be no code using it.
+        
+        
+        
+        
+        
+        
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
+        BREAKING CHANGE: isolate scope bindings definition has changed.
+        
+        To migrate the code follow the example below:
+        
+        Before:
+        
+        sample1
+        
+        After:
+        
+        sample2
+        
+        The removed `inject` wasn't generaly useful for directives so there should be no code using it.
+        
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
         
         
         
@@ -320,6 +534,19 @@ final class GitCommitTests: XCTestCase {
         commits = """
         feat(SomeFeature): This is a message.
         
+        Closes #8989, #3131, #issue3, &issue4
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
         
         Closes #8989, #3131, #issue3, &issue4
         """
@@ -329,6 +556,19 @@ final class GitCommitTests: XCTestCase {
         feat(SomeFeature): This is a message.
         
         Closes #8989, #3131, #issue3, &issue4
+        
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        commits = """
+        feat(SomeFeature): This is a message.
+        
+        Closes #8989, #3131, #issue3, &issue4
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))

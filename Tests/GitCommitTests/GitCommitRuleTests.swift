@@ -30,6 +30,8 @@ internal struct TestIsEnabledGitCommitRule: GitCommitRuleRepresentable {
 
 class GitCommitRuleTests: XCTestCase {
     static var allTests = [
+        ("testDefaultTrippingHashAnchoredLines", testDefaultTrippingHashAnchoredLines),
+        ("testTrippingHashAnchoredLines", testTrippingHashAnchoredLines),
         ("testRegex", testRegex),
         ("testDisable", testDisable),
         ("testIgnoringPattern", testIgnoringPattern),
@@ -39,8 +41,105 @@ class GitCommitRuleTests: XCTestCase {
         ("testRuleConfigurationFile", testRuleConfigurationFile),
         ("testTypes", testTypes),
         ("testScopeRequiredCase", testScopeRequiredCase),
+        ("testIgnoresHashAnchoredLines", testIgnoresHashAnchoredLines),
         ("testDefaultIsEnabled", testDefaultIsEnabled),
     ]
+    
+    func testDefaultTrippingHashAnchoredLines() {
+        let rule = TestIsEnabledGitCommitRule(isEnabled: true)
+        
+        let commits = """
+        This is a commit message.
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        #
+        #
+        """
+        
+        XCTAssertEqual(rule.map(commits: commits), commits)
+    }
+    
+    func testTrippingHashAnchoredLines() {
+        let rule = GitCommitRule(ignoresHashAnchoredLines: true)
+        let commitsMsg = "This is a commit message."
+        let commitsMsgWithHash = "This #is #a # #commit #message. #"
+        
+        var commits = """
+        \(commitsMsg)
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        #
+        #
+        """
+        
+        XCTAssertNotNil(rule.ignoresHashAnchoredLines)
+        XCTAssertTrue(rule.ignoresHashAnchoredLines!)
+        
+        XCTAssertEqual(rule.map(commits: commits), commitsMsg)
+        
+        commits = """
+        \(commitsMsgWithHash)
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        #
+        #
+        """
+        
+        XCTAssertEqual(rule.map(commits: commits), commitsMsgWithHash)
+        
+        commits = """
+        # This is a commit message will be ignored.
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        #
+        #
+        """
+        
+        XCTAssertTrue(rule.map(commits: commits).isEmpty)
+        
+        commits = """
+        \(commitsMsg)
+        
+        # This is a commit message will be ignored.
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        #
+        #
+        """
+        
+        XCTAssertEqual(rule.map(commits: commits), commitsMsg + "\n")
+        
+        commits = """
+        \(commitsMsgWithHash)
+        
+        
+        # This is a commit message will be ignored.
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch master
+        # Changes to be committed:
+        #
+        #
+        """
+        
+        XCTAssertEqual(rule.map(commits: commits), commitsMsgWithHash + "\n\n")
+    }
     
     func testRegex() {
         let rule = GitCommitRule.current
@@ -285,6 +384,40 @@ class GitCommitRuleTests: XCTestCase {
             XCTAssertTrue(rule.scope.isRequired)
             
             let commits = "feat: This is a commit message."
+            XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule))
+        } catch _ {
+            XCTAssertFalse(true)
+        }
+    }
+    
+    func testIgnoresHashAnchoredLines() {
+        var config =
+        """
+        enabled: true
+        scope:
+          required: false
+        """
+        
+        do {
+            let rule = try YAMLDecoder().decode(GitCommitRule.self, from: config)
+            XCTAssertFalse(rule.scope.isRequired)
+            XCTAssertNil(rule.ignoresHashAnchoredLines)
+            
+            let commits = """
+            feat: This is a commit message.
+
+            # Please enter the commit message for your changes. Lines starting
+            # with '#' will be ignored, and an empty message aborts the commit.
+            #
+            # On branch master
+            # Changes to be committed:
+            #       modified:   GitCommit.xcodeproj/project.xcworkspace/xcuserdata/devedbox.xcuserdatad/UserInterfaceState.xcuserstate
+            #       modified:   Sources/GitCommitFramework/Protocols/GitCommitLintable.swift
+            #       modified:   Sources/GitCommitFramework/Protocols/GitCommitRuleRepresentable.swift
+            #       modified:   Sources/GitCommitFramework/Types/GitCommitRule.swift
+            #       modified:   Tests/GitCommitTests/GitCommitRuleTests.swift
+
+            """
             XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule))
         } catch _ {
             XCTAssertFalse(true)

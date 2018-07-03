@@ -23,4 +23,4 @@
 # 	 exit 1
 # }
 
-swift run git-commit $1 --skip-build -c release
+.build/x86_64-apple-macosx10.10/debug/git-commit $1
