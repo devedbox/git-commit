@@ -21,6 +21,7 @@ public struct GitCommitRule: Decodable {
         case isEnabled = "enabled"
         case ignoringPattern = "ignoring-pattern"
         case ignoresHashAnchoredLines = "ignores-hash-anchored-lines"
+        case allowsReverting = "allows-revert"
     }
     
     public struct Scope: Decodable {
@@ -34,11 +35,12 @@ public struct GitCommitRule: Decodable {
         public let allowsAsciiPunctuation: Bool?
     }
     
-    public let types: [String]!
-    public let scope: Scope!
+    public let types: [String]
+    public let scope: Scope
     public var isEnabled: Bool
     public let ignoringPattern: String?
-    public let ignoresHashAnchoredLines: Bool?
+    public let ignoresHashAnchoredLines: Bool
+    public let allowsReverting: Bool
     
     public init(at path: String) throws {
         guard FileManager.default.fileExists(atPath: path) else {
@@ -67,26 +69,19 @@ public struct GitCommitRule: Decodable {
         let isEnabled = try container.decode(Bool.self, forKey: CodingKeys.isEnabled)
         let ignoringPattern = try container.decodeIfPresent(String.self, forKey: CodingKeys.ignoringPattern)
         let ignoresHashAnchoredLines = try container.decodeIfPresent(Bool.self, forKey: CodingKeys.ignoresHashAnchoredLines)
+        let allowsReverting = try container.decodeIfPresent(Bool.self, forKey: CodingKeys.allowsReverting)
         
-        self.init(types: types, scope: scope, isEnabled: isEnabled, ignoringPattern: ignoringPattern, ignoresHashAnchoredLines: ignoresHashAnchoredLines)
+        self.init(types: types, scope: scope, isEnabled: isEnabled, ignoringPattern: ignoringPattern, ignoresHashAnchoredLines: ignoresHashAnchoredLines, allowsReverting: allowsReverting)
     }
     
-    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true, ignoringPattern: String? = nil, ignoresHashAnchoredLines: Bool? = nil) {
-        if let types = types {
-            self.types = types
-        } else {
-            self.types = GitCommitType.all.map { $0.rawValue }
-        }
+    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true, ignoringPattern: String? = nil, ignoresHashAnchoredLines: Bool? = nil, allowsReverting: Bool? = nil) {
         
-        if let scope = scope {
-            self.scope = scope
-        } else {
-            self.scope = Scope(isRequired: false, allowsAsciiPunctuation: false)
-        }
-        
+        self.types = types ?? GitCommitType.all.map { $0.rawValue }
+        self.scope = scope ?? Scope(isRequired: false, allowsAsciiPunctuation: false)
         self.isEnabled = isEnabled
         self.ignoringPattern = ignoringPattern
-        self.ignoresHashAnchoredLines = ignoresHashAnchoredLines
+        self.ignoresHashAnchoredLines = ignoresHashAnchoredLines ?? false
+        self.allowsReverting = allowsReverting ?? true
     }
 }
 
@@ -112,7 +107,7 @@ extension GitCommitRule: GitCommitRuleRepresentable {
     }
     
     public func map(commits: String) -> String {
-        guard let ignoresHashAnchoredLines = self.ignoresHashAnchoredLines, ignoresHashAnchoredLines else {
+        guard ignoresHashAnchoredLines  else {
             return commits
         }
         
@@ -169,7 +164,7 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         let closingIssue = "(Closes \(contentsWithAsciiPunc)+)"
         let footer = "(\\n{2}(\(breakingChange)|\(closingIssue)))?"
         
-        let revert = "revert: \(header)\\n{2}This reverts commit [A-Za-z0-9\(asciiPunc)]+"
+        let revert = allowsReverting ? "revert: \(header)\\n{2}This reverts commit [A-Za-z0-9\(asciiPunc)]+" : ""
         let commit = "\(header)\(body)\(footer)"
         
         let pattern = "^(\(revert)|\(commit))$"

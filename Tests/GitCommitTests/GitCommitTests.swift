@@ -261,6 +261,15 @@ final class GitCommitTests: XCTestCase {
         The second part.
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        
+        let nonAllowsRevertingRule = GitCommitRule(allowsReverting: false)
+        commits =
+        """
+        revert: feat(pencil): add 'graphiteWidth' option
+        
+        This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+        """
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: nonAllowsRevertingRule, options: options))
     }
     
     func testLintHeaderAndBody() {

@@ -79,7 +79,7 @@ class GitCommitRuleTests: XCTestCase {
         """
         
         XCTAssertNotNil(rule.ignoresHashAnchoredLines)
-        XCTAssertTrue(rule.ignoresHashAnchoredLines!)
+        XCTAssertTrue(rule.ignoresHashAnchoredLines)
         
         XCTAssertEqual(rule.map(commits: commits), commitsMsg)
         
@@ -391,7 +391,7 @@ class GitCommitRuleTests: XCTestCase {
     }
     
     func testIgnoresHashAnchoredLines() {
-        var config =
+        let config =
         """
         enabled: true
         scope:
@@ -401,7 +401,6 @@ class GitCommitRuleTests: XCTestCase {
         do {
             let rule = try YAMLDecoder().decode(GitCommitRule.self, from: config)
             XCTAssertFalse(rule.scope.isRequired)
-            XCTAssertNil(rule.ignoresHashAnchoredLines)
             
             let commits = """
             feat: This is a commit message.
@@ -411,11 +410,11 @@ class GitCommitRuleTests: XCTestCase {
             #
             # On branch master
             # Changes to be committed:
-            #       modified:   GitCommit.xcodeproj/project.xcworkspace/xcuserdata/devedbox.xcuserdatad/UserInterfaceState.xcuserstate
-            #       modified:   Sources/GitCommitFramework/Protocols/GitCommitLintable.swift
-            #       modified:   Sources/GitCommitFramework/Protocols/GitCommitRuleRepresentable.swift
-            #       modified:   Sources/GitCommitFramework/Types/GitCommitRule.swift
-            #       modified:   Tests/GitCommitTests/GitCommitRuleTests.swift
+            #       \tmodified:   GitCommit.xcodeproj/project.xcworkspace/xcuserdata/devedbox.xcuserdatad/UserInterfaceState.xcuserstate
+            #       \tmodified:   Sources/GitCommitFramework/Protocols/GitCommitLintable.swift
+            #       \tmodified:   Sources/GitCommitFramework/Protocols/GitCommitRuleRepresentable.swift
+            #       \tmodified:   Sources/GitCommitFramework/Types/GitCommitRule.swift
+            #       \tmodified:   Tests/GitCommitTests/GitCommitRuleTests.swift
 
             """
             XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule))
