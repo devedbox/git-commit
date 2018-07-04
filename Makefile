@@ -37,8 +37,8 @@ VERSION_STRING=$(shell /usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionSt
 
 all: build
 
-bootstrap: clean build
-	install "$(GIT_COMMIT_EXECUTABLE)" "$(PRODUCTS_FOLDER)/bin/"
+bootstrap: install
+	@# install "$(GIT_COMMIT_EXECUTABLE)" "$(PRODUCTS_FOLDER)/bin/"
 	@# if which ./.git/hooks/ >/dev/null; then; else; mkdir ./.git/hooks/; fi
 	install "$(COMMIT_MSG_HOOK_PATH)" "./.git/hooks/"
 
@@ -72,6 +72,7 @@ install: clean build
 uninstall:
 	rm -rf "$(FRAMEWORKS_FOLDER)/GitCommitFramework.framework"
 	rm -f "$(BINARIES_FOLDER)/git-commit"
+	rm -f "$(PRODUCTS_FOLDER)/bin/git-commit"
 
 installables: clean build
 	install -d "$(TEMPORARY_FOLDER)$(BINARIES_FOLDER)"
