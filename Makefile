@@ -67,6 +67,7 @@ build_with_disable_sandbox:
 install: clean build
 	install -d "$(BINARIES_FOLDER)"
 	install "$(GIT_COMMIT_EXECUTABLE)" "$(BINARIES_FOLDER)"
+	install "$(GIT_COMMIT_EXECUTABLE)" "$(PRODUCTS_FOLDER)/bin/"
 
 uninstall:
 	rm -rf "$(FRAMEWORKS_FOLDER)/GitCommitFramework.framework"
