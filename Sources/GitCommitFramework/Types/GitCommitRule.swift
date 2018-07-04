@@ -107,7 +107,7 @@ extension GitCommitRule: GitCommitRuleRepresentable {
     }
     
     public func map(commits: String) -> String {
-        guard ignoresHashAnchoredLines  else {
+        guard ignoresHashAnchoredLines else {
             return commits
         }
         
