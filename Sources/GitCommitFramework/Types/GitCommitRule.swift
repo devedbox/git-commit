@@ -111,7 +111,7 @@ extension GitCommitRule: GitCommitRuleRepresentable {
             return commits
         }
         
-        // Tripping the hash(`#`) anchored lines if any.
+        // Trimming the hash(`#`) anchored lines if any.
         return
             commits.components(separatedBy: CharacterSet.newlines)
                 .filter { !$0.hasPrefix("#") }
