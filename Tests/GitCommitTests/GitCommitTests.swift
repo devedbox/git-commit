@@ -77,6 +77,9 @@ final class GitCommitTests: XCTestCase {
                                            attributes: nil)
         }
         XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: rule))
+        
+        let ignoresHashAnchoredLinesRule = GitCommitRule(types: nil, scope: nil, isEnabled: true, ignoringPattern: nil, ignoresHashAnchoredLines: true, allowsReverting: true)
+        XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: ignoresHashAnchoredLinesRule))
     }
     
     func testCommits2String() {

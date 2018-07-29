@@ -18,4 +18,7 @@ public enum GitCommitError: Error {
     case invalidConfigPath
     /// Indicates the commits content of the given path is empty.
     case emptyConfigContents(atPath: String)
+    
+    /// Indicates the range is invalid.
+    case invalidRange
 }

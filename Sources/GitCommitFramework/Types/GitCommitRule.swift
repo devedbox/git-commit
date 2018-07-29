@@ -107,6 +107,16 @@ extension GitCommitRule: GitCommitRuleRepresentable {
     }
     
     public func map(commits: String) -> String {
+        var commits = commits
+        
+        if ignoresHashAnchoredLines {
+            commits = commits.components(separatedBy: CharacterSet.newlines)
+                .filter { !$0.hasPrefix("#") }
+                .joined(separator: "\n")
+        }
+        
+        return trimming(charactersIn: .newlines, of: commits)
+        
         guard ignoresHashAnchoredLines else {
             return commits
         }

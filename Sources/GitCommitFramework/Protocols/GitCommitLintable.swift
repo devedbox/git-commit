@@ -29,6 +29,11 @@ extension GitCommitLintable {
         let regex = try rule.asRegex()
         
         let range = (commits as NSString).range(of: commits)
+        
+        guard range.location != NSNotFound && range.length != NSNotFound else {
+            throw GitCommitError.invalidRange
+        }
+        
         let matches = regex.matches(in: commits, options: [.anchored], range: range)
         
         let verbose = options.contains(GitCommitLintOptions.verbose)
