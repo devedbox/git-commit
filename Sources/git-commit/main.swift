@@ -12,7 +12,15 @@ import Darwin
 #endif
 
 import GitCommitFramework
+echo(.warning, message: """
+        Invalid commands specified.
 
+        Available commands:
+
+        version: Shows the version of git-commit.
+        init: Creates hooks and config files at the project path.
+        PATH: Specify the commit message path to lint.
+        """)
 guard CommandLine.arguments.count >= 2 else {
     echo(.warning, message: """
         Invalid commands specified.
