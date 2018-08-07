@@ -10,6 +10,8 @@ import Foundation
 // MARK: - GitCommit.
 
 public struct GitCommit: GitCommitLintable {
+    /// Returns the version of the framework.
+    public static var version: String { return GitCommitVersion }
     /// The commits contents.
     private let _commits: String
     /// Returns the commit contents of the receiver of `GitCommit`.

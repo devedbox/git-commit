@@ -18,6 +18,11 @@ guard CommandLine.arguments.count >= 2 else {
     exit(1)
 }
 
+if case let version? = Optional.some(CommandLine.arguments[1]), version == "version" {
+    echo(.notes, message: GitCommit.version)
+    exit(0)
+}
+
 do {
     guard try GitCommit(commitPath: CommandLine.arguments[1]).lint(with: .current) else {
         exit(1)
