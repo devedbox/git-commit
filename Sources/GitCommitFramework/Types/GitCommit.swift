@@ -90,9 +90,12 @@ extension GitCommit {
         }
         
         try? FileManager.default.removeItem(atPath: commitMsgHookPath)
+        if !FileManager.default.fileExists(atPath: cwd + "/.git/hooks") {
+            try? FileManager.default.createDirectory(atPath: cwd + "/.git/hooks", withIntermediateDirectories: false, attributes: nil)
+        }
         FileManager.default.createFile(atPath: commitMsgHookPath,
                                        contents: commitMsgHookContent.data(using: .utf8),
-                                       attributes: nil)
+                                       attributes: [.posixPermissions: 493])
         
         let configPath = cwd + "/.git-commit.yml"
         if !FileManager.default.fileExists(atPath: configPath) {
