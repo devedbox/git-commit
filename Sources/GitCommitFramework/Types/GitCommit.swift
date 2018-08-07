@@ -69,9 +69,9 @@ extension GitCommit {
     public static func bootstrap() throws {
         let cwd = FileManager.default.currentDirectoryPath
         let commitMsgHookContent = """
-        #!/bin/sh
+        #!/bin/bash
         
-        git-commit $1
+        /usr/local/bin/git-commit $1
         """
         
         var isDirectory: ObjCBool = true
