@@ -12,6 +12,7 @@ import Foundation
 final class GitCommitTests: XCTestCase {
     
     static var allTests = [
+        ("testTrimmingEmptyString", testTrimmingEmptyString),
         ("testReadFromFile", testReadFromFile),
         ("testCommits2String", testCommits2String),
         ("testInvalidCommitsPath", testInvalidCommitsPath),
@@ -25,6 +26,11 @@ final class GitCommitTests: XCTestCase {
     ]
     
     let rule = GitCommitRule()
+    
+    func testTrimmingEmptyString() {
+        let string = ""
+        XCTAssertEqual(string, trimming(charactersIn: .newlines, of: string))
+    }
     
     func testReadFromFile() {
         let path = FileManager.default.currentDirectoryPath + "/commits"
@@ -79,7 +85,10 @@ final class GitCommitTests: XCTestCase {
         XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: rule))
         
         let ignoresHashAnchoredLinesRule = GitCommitRule(types: nil, scope: nil, isEnabled: true, ignoringPattern: nil, ignoresHashAnchoredLines: true, allowsReverting: true)
-        XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: ignoresHashAnchoredLinesRule))
+        XCTAssertFalse(try GitCommit(commitPath: "commits").lint(with: ignoresHashAnchoredLinesRule))
+        
+        let ignoresTrailingNewLinesRule = GitCommitRule(types: nil, scope: nil, isEnabled: true, ignoringPattern: nil, ignoresHashAnchoredLines: true, allowsReverting: true, ignoresTrailingNewLines: true)
+        XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: ignoresTrailingNewLinesRule))
     }
     
     func testCommits2String() {

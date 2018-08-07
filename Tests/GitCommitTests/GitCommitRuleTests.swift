@@ -64,6 +64,8 @@ class GitCommitRuleTests: XCTestCase {
     
     func testTrippingHashAnchoredLines() {
         let rule = GitCommitRule(ignoresHashAnchoredLines: true)
+        let nonTrippingRule = GitCommitRule(ignoresHashAnchoredLines: false)
+        
         let commitsMsg = "feat: This is a commit message."
         let commitsMsgWithHash = "feat: This #is #a # #commit #message. #"
         
@@ -83,6 +85,7 @@ class GitCommitRuleTests: XCTestCase {
         
         XCTAssertEqual(rule.map(commits: commits), commitsMsg)
         XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: nonTrippingRule))
         
         commits = """
         \(commitsMsgWithHash)
@@ -97,6 +100,7 @@ class GitCommitRuleTests: XCTestCase {
         
         XCTAssertEqual(rule.map(commits: commits), commitsMsgWithHash)
         XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: nonTrippingRule))
         
         commits = """
         # This is a commit message will be ignored.
@@ -111,6 +115,7 @@ class GitCommitRuleTests: XCTestCase {
         
         XCTAssertTrue(rule.map(commits: commits).isEmpty)
         XCTAssertThrowsError(try GitCommit(stringLiteral: commits).lint(with: rule))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: nonTrippingRule))
         
         commits = """
         \(commitsMsg)
@@ -126,7 +131,8 @@ class GitCommitRuleTests: XCTestCase {
         """
         
         XCTAssertEqual(rule.map(commits: commits), commitsMsg + "\n")
-        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: nonTrippingRule))
         
         commits = """
         \(commitsMsgWithHash)
@@ -144,6 +150,7 @@ class GitCommitRuleTests: XCTestCase {
         
         XCTAssertEqual(rule.map(commits: commits), commitsMsgWithHash + "\n\n")
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: nonTrippingRule))
     }
     
     func testRegex() {
