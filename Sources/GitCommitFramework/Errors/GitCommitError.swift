@@ -21,4 +21,11 @@ public enum GitCommitError: Error {
     
     /// Indicates the range is invalid.
     case invalidRange
+    
+    /// Indicates the git repository is not existing.
+    case gitRepositoryNotExist(atPath: String)
+    /// Indicates the git repository is invalid.
+    case invalidGitRepository(atPath: String)
+    /// Indicates the bootstrap is duplicate.
+    case duplicateBootstrap
 }

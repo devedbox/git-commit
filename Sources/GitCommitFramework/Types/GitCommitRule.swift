@@ -50,7 +50,7 @@ public struct GitCommitRule: Decodable {
     public let ignoresHashAnchoredLines: Bool
     /// Should allows revert commit. Default is `true`.
     public let allowsReverting: Bool
-    /// Indicates ignores the triling new lines and trimming the trailing new lines when linting.
+    /// Indicates ignores the triling new lines and trimming the trailing new lines when linting. Default is `false`.
     public let ignoresTrailingNewLines: Bool
     
     public init(at path: String) throws {
