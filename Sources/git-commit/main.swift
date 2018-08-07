@@ -14,7 +14,15 @@ import Darwin
 import GitCommitFramework
 
 guard CommandLine.arguments.count >= 2 else {
-    echo(.warning, message: "\nInvalid count of arguments.\n")
+    echo(.warning, message: """
+        Invalid commands specified.
+
+        Available commands:
+
+        version: Shows the version of git-commit.
+        init: Creates hooks and config files at the project path.
+        PATH: Specify the commit message path to lint.
+        """)
     exit(1)
 }
 
@@ -25,7 +33,23 @@ case "version": // Shows the version info.
 case "init": // Bootstrap.
     do {
         try GitCommit.bootstrap()
-    } catch _ {
+        echo(.notes, message: "Creates git hooks and .git-commit.yml configuration successfully.")
+    } catch let error {
+        switch error {
+        case GitCommitError.gitRepositoryNotExist(atPath: _): fallthrough
+        case GitCommitError.invalidGitRepository(atPath: _):
+            echo(.error, message:
+                """
+                There is no valid git repository. Please create git repository first by running `git init`.
+                """)
+        case GitCommitError.duplicateBootstrap:
+            echo(.warning, message:
+                """
+                \(GitCommitError.duplicateBootstrap)
+                """)
+        default:
+            break
+        }
     }
 default:
     do {
@@ -38,7 +62,11 @@ default:
             There is no commits content at '\(path)'
             """)
         exit(1)
-    } catch _ {
+    } catch let error {
+        echo(.error, message:
+            """
+            Error occurred during linting: \(error)
+            """)
         exit(1)
     }
 }
