@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "GitCommit::GitCommitFramework"
+               BuildableName = "GitCommitFramework.framework"
+               BlueprintName = "GitCommitFramework"
+               ReferencedContainer = "container:GitCommit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "GitCommit::git-commit"
                BuildableName = "git-commit"
                BlueprintName = "git-commit"
@@ -42,20 +56,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "GitCommit::GitCommitFramework"
-               BuildableName = "GitCommitFramework.framework"
-               BlueprintName = "GitCommitFramework"
-               ReferencedContainer = "container:GitCommit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "Yams::Yams"
                BuildableName = "Yams.framework"
                BlueprintName = "Yams"
@@ -68,7 +68,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -98,9 +97,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "GitCommit::git-commit"
-            BuildableName = "git-commit"
-            BlueprintName = "git-commit"
+            BlueprintIdentifier = "GitCommit::GitCommitFramework"
+            BuildableName = "GitCommitFramework.framework"
+            BlueprintName = "GitCommitFramework"
             ReferencedContainer = "container:GitCommit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
