@@ -50,9 +50,9 @@ test_tsan:
 	DYLD_INSERT_LIBRARIES=$(TSAN_LIB) $(TSAN_XCTEST) $(TSAN_TEST_BUNDLE)
 
 clean:
-	rm -f "$(PRODUCTS_FOLDER)/bin/git-commit"
 	rm -f "$(PRODUCTS_FOLDER)/GitCommit.pkg"
 	rm -f "$(PRODUCTS_FOLDER)/git-commit.zip"
+	rm -f "$(PRODUCTS_FOLDER)/GitCommitFramework.framework.zip"
 	swift package clean
 
 clean_xcode: clean
@@ -98,6 +98,7 @@ package: installables
 archive:
 	carthage build --no-skip-current --platform mac
 	carthage archive GitCommitFramework
+	mv GitCommitFramework.framework.zip Products/
 
 release: package archive portable_zip
 
