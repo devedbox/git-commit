@@ -1,0 +1,4 @@
+module CYaml {
+    umbrella header "/Users/devedbox/Documents/Github/GitCommit/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include/CYaml.h"
+    export *
+}
