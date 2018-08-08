@@ -91,8 +91,6 @@ extension GitCommit {
         let commitMsgHookPath = cwd + "/.git/hooks/commit-msg"
         
         if  FileManager.default.fileExists(atPath: commitMsgHookPath),
-            case let commitMsgHook? = try? String(contentsOfFile: commitMsgHookPath),
-            commitMsgHook == commitMsgHookContent,
             !allowsOverriding
         {
             throw GitCommitError.duplicateBootstrap
