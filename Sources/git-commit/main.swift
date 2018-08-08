@@ -13,21 +13,25 @@ import Darwin
 
 import GitCommitFramework
 
+let HelpMessage = """
+Invalid commands specified.
+
+Available commands:
+
+version: Shows the version of git-commit.
+init: Creates hooks and config files at the project path.
+PATH: Specify the commit message path to lint.
+"""
+
 guard CommandLine.arguments.count >= 2 else {
-    echo(.warning, message: """
-        Invalid commands specified.
-
-        Available commands:
-
-        version: Shows the version of git-commit.
-        init: Creates hooks and config files at the project path.
-        PATH: Specify the commit message path to lint.
-        """)
+    echo(.warning, message: HelpMessage)
     exit(1)
 }
 
 let command = CommandLine.arguments[1]
 switch command {
+case "help":
+    echo(message: HelpMessage)
 case "version": // Shows the version info.
     echo(.notes, message: GitCommit.version)
 case "init": // Bootstrap.
@@ -54,7 +58,7 @@ case "init": // Bootstrap.
     }
 default:
     do {
-        guard try GitCommit(commitPath: CommandLine.arguments[1]).lint(with: .current) else {
+        guard try GitCommit(commitPath: command).lint(with: .current) else {
             exit(1)
         }
     } catch GitCommitError.emptyCommitContents(atPath: let path) {
