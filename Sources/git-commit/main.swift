@@ -58,6 +58,7 @@ case "init": // Bootstrap.
         exit(1)
     }
 default:
+    notifyArgumentsErrorIfNeeded(args: Array(commands[2...]))
     do {
         guard try GitCommit(commitPath: command).lint(with: .current) else {
             exit(1)
