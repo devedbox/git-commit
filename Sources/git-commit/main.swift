@@ -13,30 +13,31 @@ import Darwin
 
 import GitCommitFramework
 
-let HelpMessage = """
-Invalid commands specified.
+let commands = CommandLine.arguments
+guard commands.count >= 2 else {
+    echo(.warning, message: """
+    Invalid commands specified.
 
-Available commands:
-
-version: Shows the version of git-commit.
-init: Creates hooks and config files at the project path.
-PATH: Specify the commit message path to lint.
-"""
-
-guard CommandLine.arguments.count >= 2 else {
-    echo(.warning, message: HelpMessage)
+    \(HelpMessage)
+    """)
     exit(1)
 }
 
-let command = CommandLine.arguments[1]
+let command = commands[1]
 switch command {
 case "help":
+    notifyArgumentsErrorIfNeeded(args: Array(commands[2...]))
     echo(message: HelpMessage)
 case "version": // Shows the version info.
-    echo(.notes, message: GitCommit.version)
+    notifyArgumentsErrorIfNeeded(args: Array(commands[2...]))
+    echo(message: GitCommit.version)
 case "init": // Bootstrap.
+    let allowsOverriding = commands.index(1, offsetBy: 1, limitedBy: commands.index(before: commands.endIndex)).map { commands[$0] == "--override" } ?? false
+    
+    notifyArgumentsErrorIfNeeded(args: Array(CommandLine.arguments[(allowsOverriding ? 3 : 2)...]))
+    
     do {
-        try GitCommit.bootstrap()
+        try GitCommit.bootstrap(allowsOverriding: allowsOverriding)
         echo(.notes, message: "Creates git hooks and .git-commit.yml configuration successfully.")
     } catch let error {
         switch error {
@@ -44,7 +45,7 @@ case "init": // Bootstrap.
         case GitCommitError.invalidGitRepository(atPath: _):
             echo(.error, message:
                 """
-                There is no valid git repository. Please create git repository first by running `git init`.
+                There is no valid git repository. Please create git repository by running `git init` first.
                 """)
         case GitCommitError.duplicateBootstrap:
             echo(.warning, message:
