@@ -81,7 +81,7 @@ class GitCommitRuleTests: XCTestCase {
         """
         
         XCTAssertNotNil(rule.ignoresHashAnchoredLines)
-        XCTAssertFalse(rule.ignoresHashAnchoredLines)
+        XCTAssertTrue(rule.ignoresHashAnchoredLines)
         
         XCTAssertEqual(rule.map(commits: commits), commitsMsg)
         XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule))
