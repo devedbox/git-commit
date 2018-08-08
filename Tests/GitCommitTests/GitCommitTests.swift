@@ -26,6 +26,9 @@ final class GitCommitTests: XCTestCase {
     ]
     
     let rule = GitCommitRule()
+    let trimmingRule = GitCommitRule(ignoresTrailingNewLines: true)
+    let anchoredRule = GitCommitRule(ignoresHashAnchoredLines: true)
+    let trimmingAnchoredRule = GitCommitRule(ignoresHashAnchoredLines: true, ignoresTrailingNewLines: true)
     
     func testTrimmingEmptyString() {
         let string = ""
@@ -83,6 +86,9 @@ final class GitCommitTests: XCTestCase {
                                            attributes: nil)
         }
         XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: rule))
+        XCTAssertFalse(try GitCommit(commitPath: "commits").lint(with: anchoredRule))
+        XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: trimmingRule))
+        XCTAssertTrue(try GitCommit(commitPath: "commits").lint(with: trimmingAnchoredRule))
         
         let ignoresHashAnchoredLinesRule = GitCommitRule(types: nil, scope: nil, isEnabled: true, ignoringPattern: nil, ignoresHashAnchoredLines: true, allowsReverting: true)
         XCTAssertFalse(try GitCommit(commitPath: "commits").lint(with: ignoresHashAnchoredLinesRule))
@@ -229,6 +235,9 @@ final class GitCommitTests: XCTestCase {
         """
         
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: anchoredRule, options: options))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: trimmingRule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
         
         commits =
         """
@@ -254,6 +263,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingRule, options: options))
         
         commits =
         """
@@ -311,6 +321,8 @@ final class GitCommitTests: XCTestCase {
         """
         
         XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: anchoredRule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -363,6 +375,8 @@ final class GitCommitTests: XCTestCase {
         """
         
         XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: anchoredRule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -372,6 +386,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -384,6 +399,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -401,6 +417,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
     }
     
     func testLintHeaderAndFooter() {
@@ -482,6 +499,8 @@ final class GitCommitTests: XCTestCase {
         # Changes to be committed:
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: anchoredRule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -507,6 +526,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -536,6 +556,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -556,6 +577,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -572,6 +594,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
@@ -585,6 +608,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingAnchoredRule, options: options))
     }
     
     func testLintHeaderAndBodyAndFooter() {
@@ -656,6 +680,7 @@ final class GitCommitTests: XCTestCase {
         
         """
         XCTAssertFalse(try GitCommit(stringLiteral: commits).lint(with: rule, options: options))
+        XCTAssertTrue(try GitCommit(stringLiteral: commits).lint(with: trimmingRule, options: options))
         
         commits = """
         feat(SomeFeature): This is a message.
