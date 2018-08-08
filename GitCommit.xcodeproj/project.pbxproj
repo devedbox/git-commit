@@ -1,1541 +1,1162 @@
 // !$*UTF8*$!
 {
-   archiveVersion = "1";
-   objectVersion = "46";
-   objects = {
-      "GitCommit::GitCommitFramework" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_82";
-         buildPhases = (
-            "OBJ_85",
-            "OBJ_95"
-         );
-         dependencies = (
-            "OBJ_98",
-            "OBJ_100"
-         );
-         name = "GitCommitFramework";
-         productName = "GitCommitFramework";
-         productReference = "GitCommit::GitCommitFramework::Product";
-         productType = "com.apple.product-type.framework";
-      };
-      "GitCommit::GitCommitFramework::Product" = {
-         isa = "PBXFileReference";
-         path = "GitCommitFramework.framework";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "GitCommit::GitCommitPackageTests::ProductTarget" = {
-         isa = "PBXAggregateTarget";
-         buildConfigurationList = "OBJ_108";
-         buildPhases = (
-         );
-         dependencies = (
-            "OBJ_111"
-         );
-         name = "GitCommitPackageTests";
-         productName = "GitCommitPackageTests";
-      };
-      "GitCommit::GitCommitTests" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_113";
-         buildPhases = (
-            "OBJ_116",
-            "OBJ_120"
-         );
-         dependencies = (
-            "OBJ_124",
-            "OBJ_125",
-            "OBJ_126"
-         );
-         name = "GitCommitTests";
-         productName = "GitCommitTests";
-         productReference = "GitCommit::GitCommitTests::Product";
-         productType = "com.apple.product-type.bundle.unit-test";
-      };
-      "GitCommit::GitCommitTests::Product" = {
-         isa = "PBXFileReference";
-         path = "GitCommitTests.xctest";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "GitCommit::SwiftPMPackageDescription" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_102";
-         buildPhases = (
-            "OBJ_105"
-         );
-         dependencies = (
-         );
-         name = "GitCommitPackageDescription";
-         productName = "GitCommitPackageDescription";
-         productType = "com.apple.product-type.framework";
-      };
-      "GitCommit::git-commit" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_157";
-         buildPhases = (
-            "OBJ_160",
-            "OBJ_162"
-         );
-         dependencies = (
-            "OBJ_166",
-            "OBJ_167",
-            "OBJ_168"
-         );
-         name = "git-commit";
-         productName = "git_commit";
-         productReference = "GitCommit::git-commit::Product";
-         productType = "com.apple.product-type.tool";
-      };
-      "GitCommit::git-commit::Product" = {
-         isa = "PBXFileReference";
-         path = "git-commit";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "OBJ_1" = {
-         isa = "PBXProject";
-         attributes = {
-            LastUpgradeCheck = "9999";
-         };
-         buildConfigurationList = "OBJ_2";
-         compatibilityVersion = "Xcode 3.2";
-         developmentRegion = "English";
-         hasScannedForEncodings = "0";
-         knownRegions = (
-            "en"
-         );
-         mainGroup = "OBJ_5";
-         productRefGroup = "OBJ_63";
-         projectDirPath = ".";
-         targets = (
-            "Yams::CYaml",
-            "GitCommit::GitCommitFramework",
-            "GitCommit::SwiftPMPackageDescription",
-            "GitCommit::GitCommitPackageTests::ProductTarget",
-            "GitCommit::GitCommitTests",
-            "Yams::Yams",
-            "Yams::SwiftPMPackageDescription",
-            "GitCommit::git-commit"
-         );
-      };
-      "OBJ_10" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_11",
-            "OBJ_12",
-            "OBJ_14",
-            "OBJ_17",
-            "OBJ_22"
-         );
-         name = "GitCommitFramework";
-         path = "Sources/GitCommitFramework";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_100" = {
-         isa = "PBXTargetDependency";
-         target = "Yams::CYaml";
-      };
-      "OBJ_102" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_103",
-            "OBJ_104"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_103" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "4",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
-            );
-            SWIFT_VERSION = "4.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_104" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "4",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
-            );
-            SWIFT_VERSION = "4.0";
-         };
-         name = "Release";
-      };
-      "OBJ_105" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_106"
-         );
-      };
-      "OBJ_106" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_6";
-      };
-      "OBJ_108" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_109",
-            "OBJ_110"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_109" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
-         name = "Debug";
-      };
-      "OBJ_11" = {
-         isa = "PBXFileReference";
-         path = "Constant.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_110" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
-         name = "Release";
-      };
-      "OBJ_111" = {
-         isa = "PBXTargetDependency";
-         target = "GitCommit::GitCommitTests";
-      };
-      "OBJ_113" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_114",
-            "OBJ_115"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_114" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/GitCommitTests_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "@loader_path/../Frameworks",
-               "@loader_path/Frameworks"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "GitCommitTests";
-         };
-         name = "Debug";
-      };
-      "OBJ_115" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/GitCommitTests_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "@loader_path/../Frameworks",
-               "@loader_path/Frameworks"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "GitCommitTests";
-         };
-         name = "Release";
-      };
-      "OBJ_116" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_117",
-            "OBJ_118",
-            "OBJ_119"
-         );
-      };
-      "OBJ_117" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_25";
-      };
-      "OBJ_118" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_26";
-      };
-      "OBJ_119" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_27";
-      };
-      "OBJ_12" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_13"
-         );
-         name = "Errors";
-         path = "Errors";
-         sourceTree = "<group>";
-      };
-      "OBJ_120" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_121",
-            "OBJ_122",
-            "OBJ_123"
-         );
-      };
-      "OBJ_121" = {
-         isa = "PBXBuildFile";
-         fileRef = "GitCommit::GitCommitFramework::Product";
-      };
-      "OBJ_122" = {
-         isa = "PBXBuildFile";
-         fileRef = "Yams::Yams::Product";
-      };
-      "OBJ_123" = {
-         isa = "PBXBuildFile";
-         fileRef = "Yams::CYaml::Product";
-      };
-      "OBJ_124" = {
-         isa = "PBXTargetDependency";
-         target = "GitCommit::GitCommitFramework";
-      };
-      "OBJ_125" = {
-         isa = "PBXTargetDependency";
-         target = "Yams::Yams";
-      };
-      "OBJ_126" = {
-         isa = "PBXTargetDependency";
-         target = "Yams::CYaml";
-      };
-      "OBJ_127" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_128",
-            "OBJ_129"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_128" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/Yams_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "Yams";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "Yams";
-         };
-         name = "Debug";
-      };
-      "OBJ_129" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/Yams_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "Yams";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "Yams";
-         };
-         name = "Release";
-      };
-      "OBJ_13" = {
-         isa = "PBXFileReference";
-         path = "GitCommitError.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_130" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_131",
-            "OBJ_132",
-            "OBJ_133",
-            "OBJ_134",
-            "OBJ_135",
-            "OBJ_136",
-            "OBJ_137",
-            "OBJ_138",
-            "OBJ_139",
-            "OBJ_140",
-            "OBJ_141",
-            "OBJ_142",
-            "OBJ_143",
-            "OBJ_144",
-            "OBJ_145",
-            "OBJ_146"
-         );
-      };
-      "OBJ_131" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_34";
-      };
-      "OBJ_132" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_35";
-      };
-      "OBJ_133" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_36";
-      };
-      "OBJ_134" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_37";
-      };
-      "OBJ_135" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_38";
-      };
-      "OBJ_136" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_39";
-      };
-      "OBJ_137" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_40";
-      };
-      "OBJ_138" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_41";
-      };
-      "OBJ_139" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_42";
-      };
-      "OBJ_14" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_15",
-            "OBJ_16"
-         );
-         name = "Protocols";
-         path = "Protocols";
-         sourceTree = "<group>";
-      };
-      "OBJ_140" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_43";
-      };
-      "OBJ_141" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_44";
-      };
-      "OBJ_142" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_45";
-      };
-      "OBJ_143" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_46";
-      };
-      "OBJ_144" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_47";
-      };
-      "OBJ_145" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_48";
-      };
-      "OBJ_146" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_49";
-      };
-      "OBJ_147" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_148"
-         );
-      };
-      "OBJ_148" = {
-         isa = "PBXBuildFile";
-         fileRef = "Yams::CYaml::Product";
-      };
-      "OBJ_149" = {
-         isa = "PBXTargetDependency";
-         target = "Yams::CYaml";
-      };
-      "OBJ_15" = {
-         isa = "PBXFileReference";
-         path = "GitCommitLintable.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_151" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_152",
-            "OBJ_153"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_152" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "4",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
-            );
-            SWIFT_VERSION = "4.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_153" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "4",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
-            );
-            SWIFT_VERSION = "4.0";
-         };
-         name = "Release";
-      };
-      "OBJ_154" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_155"
-         );
-      };
-      "OBJ_155" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_62";
-      };
-      "OBJ_157" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_158",
-            "OBJ_159"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_158" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/git_commit_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
-               "@executable_path"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
-            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "git-commit";
-         };
-         name = "Debug";
-      };
-      "OBJ_159" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/git_commit_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
-               "@executable_path"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
-            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "git-commit";
-         };
-         name = "Release";
-      };
-      "OBJ_16" = {
-         isa = "PBXFileReference";
-         path = "GitCommitRuleRepresentable.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_160" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_161"
-         );
-      };
-      "OBJ_161" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_9";
-      };
-      "OBJ_162" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_163",
-            "OBJ_164",
-            "OBJ_165"
-         );
-      };
-      "OBJ_163" = {
-         isa = "PBXBuildFile";
-         fileRef = "GitCommit::GitCommitFramework::Product";
-      };
-      "OBJ_164" = {
-         isa = "PBXBuildFile";
-         fileRef = "Yams::Yams::Product";
-      };
-      "OBJ_165" = {
-         isa = "PBXBuildFile";
-         fileRef = "Yams::CYaml::Product";
-      };
-      "OBJ_166" = {
-         isa = "PBXTargetDependency";
-         target = "GitCommit::GitCommitFramework";
-      };
-      "OBJ_167" = {
-         isa = "PBXTargetDependency";
-         target = "Yams::Yams";
-      };
-      "OBJ_168" = {
-         isa = "PBXTargetDependency";
-         target = "Yams::CYaml";
-      };
-      "OBJ_17" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_18",
-            "OBJ_19",
-            "OBJ_20",
-            "OBJ_21"
-         );
-         name = "Types";
-         path = "Types";
-         sourceTree = "<group>";
-      };
-      "OBJ_18" = {
-         isa = "PBXFileReference";
-         path = "GitCommit.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_19" = {
-         isa = "PBXFileReference";
-         path = "GitCommitLintOptions.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_2" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_3",
-            "OBJ_4"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_20" = {
-         isa = "PBXFileReference";
-         path = "GitCommitRule.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_21" = {
-         isa = "PBXFileReference";
-         path = "GitCommitType.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_22" = {
-         isa = "PBXFileReference";
-         path = "misc.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_23" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_24"
-         );
-         name = "Tests";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_24" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_25",
-            "OBJ_26",
-            "OBJ_27"
-         );
-         name = "GitCommitTests";
-         path = "Tests/GitCommitTests";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_25" = {
-         isa = "PBXFileReference";
-         path = "GitCommitRuleTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_26" = {
-         isa = "PBXFileReference";
-         path = "GitCommitTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_27" = {
-         isa = "PBXFileReference";
-         path = "XCTestManifests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_28" = {
-         isa = "PBXFileReference";
-         path = "Products";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_29" = {
-         isa = "PBXFileReference";
-         path = "Carthage";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_3" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_OBJC_ARC = "YES";
-            COMBINE_HIDPI_IMAGES = "YES";
-            COPY_PHASE_STRIP = "NO";
-            DEBUG_INFORMATION_FORMAT = "dwarf";
-            DYLIB_INSTALL_NAME_BASE = "@rpath";
-            ENABLE_NS_ASSERTIONS = "YES";
-            GCC_OPTIMIZATION_LEVEL = "0";
-            GCC_PREPROCESSOR_DEFINITIONS = (
-               "DEBUG=1",
-               "$(inherited)"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            ONLY_ACTIVE_ARCH = "YES";
-            OTHER_SWIFT_FLAGS = (
-               "-DXcode"
-            );
-            PRODUCT_NAME = "$(TARGET_NAME)";
-            SDKROOT = "macosx";
-            SUPPORTED_PLATFORMS = (
-               "macosx",
-               "iphoneos",
-               "iphonesimulator",
-               "appletvos",
-               "appletvsimulator",
-               "watchos",
-               "watchsimulator"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "DEBUG"
-            );
-            SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-            USE_HEADERMAP = "NO";
-         };
-         name = "Debug";
-      };
-      "OBJ_30" = {
-         isa = "PBXFileReference";
-         path = "Scripts";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_31" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_32"
-         );
-         name = "Dependencies";
-         path = "";
-         sourceTree = "<group>";
-      };
-      "OBJ_32" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_33",
-            "OBJ_50",
-            "OBJ_62"
-         );
-         name = "Yams 1.0.0";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_33" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_34",
-            "OBJ_35",
-            "OBJ_36",
-            "OBJ_37",
-            "OBJ_38",
-            "OBJ_39",
-            "OBJ_40",
-            "OBJ_41",
-            "OBJ_42",
-            "OBJ_43",
-            "OBJ_44",
-            "OBJ_45",
-            "OBJ_46",
-            "OBJ_47",
-            "OBJ_48",
-            "OBJ_49"
-         );
-         name = "Yams";
-         path = ".build/checkouts/Yams.git-23197824484740316/Sources/Yams";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_34" = {
-         isa = "PBXFileReference";
-         path = "Constructor.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_35" = {
-         isa = "PBXFileReference";
-         path = "Decoder.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_36" = {
-         isa = "PBXFileReference";
-         path = "Emitter.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_37" = {
-         isa = "PBXFileReference";
-         path = "Encoder.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_38" = {
-         isa = "PBXFileReference";
-         path = "Mark.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_39" = {
-         isa = "PBXFileReference";
-         path = "Node.Mapping.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_4" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_OBJC_ARC = "YES";
-            COMBINE_HIDPI_IMAGES = "YES";
-            COPY_PHASE_STRIP = "YES";
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-            DYLIB_INSTALL_NAME_BASE = "@rpath";
-            GCC_OPTIMIZATION_LEVEL = "s";
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_SWIFT_FLAGS = (
-               "-DXcode"
-            );
-            PRODUCT_NAME = "$(TARGET_NAME)";
-            SDKROOT = "macosx";
-            SUPPORTED_PLATFORMS = (
-               "macosx",
-               "iphoneos",
-               "iphonesimulator",
-               "appletvos",
-               "appletvsimulator",
-               "watchos",
-               "watchsimulator"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "SWIFT_PACKAGE"
-            );
-            SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-            USE_HEADERMAP = "NO";
-         };
-         name = "Release";
-      };
-      "OBJ_40" = {
-         isa = "PBXFileReference";
-         path = "Node.Scalar.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_41" = {
-         isa = "PBXFileReference";
-         path = "Node.Sequence.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_42" = {
-         isa = "PBXFileReference";
-         path = "Node.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_43" = {
-         isa = "PBXFileReference";
-         path = "Parser.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_44" = {
-         isa = "PBXFileReference";
-         path = "Representer.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_45" = {
-         isa = "PBXFileReference";
-         path = "Resolver.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_46" = {
-         isa = "PBXFileReference";
-         path = "String+Yams.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_47" = {
-         isa = "PBXFileReference";
-         path = "Tag.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_48" = {
-         isa = "PBXFileReference";
-         path = "YamlError.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_49" = {
-         isa = "PBXFileReference";
-         path = "shim.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_5" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_6",
-            "OBJ_7",
-            "OBJ_23",
-            "OBJ_28",
-            "OBJ_29",
-            "OBJ_30",
-            "OBJ_31",
-            "OBJ_63"
-         );
-         path = "";
-         sourceTree = "<group>";
-      };
-      "OBJ_50" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_51",
-            "OBJ_58"
-         );
-         name = "CYaml";
-         path = ".build/checkouts/Yams.git-23197824484740316/Sources/CYaml";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_51" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_52",
-            "OBJ_53",
-            "OBJ_54",
-            "OBJ_55",
-            "OBJ_56",
-            "OBJ_57"
-         );
-         name = "src";
-         path = "src";
-         sourceTree = "<group>";
-      };
-      "OBJ_52" = {
-         isa = "PBXFileReference";
-         path = "api.c";
-         sourceTree = "<group>";
-      };
-      "OBJ_53" = {
-         isa = "PBXFileReference";
-         path = "emitter.c";
-         sourceTree = "<group>";
-      };
-      "OBJ_54" = {
-         isa = "PBXFileReference";
-         path = "parser.c";
-         sourceTree = "<group>";
-      };
-      "OBJ_55" = {
-         isa = "PBXFileReference";
-         path = "reader.c";
-         sourceTree = "<group>";
-      };
-      "OBJ_56" = {
-         isa = "PBXFileReference";
-         path = "scanner.c";
-         sourceTree = "<group>";
-      };
-      "OBJ_57" = {
-         isa = "PBXFileReference";
-         path = "writer.c";
-         sourceTree = "<group>";
-      };
-      "OBJ_58" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_59",
-            "OBJ_60",
-            "OBJ_61"
-         );
-         name = "include";
-         path = "include";
-         sourceTree = "<group>";
-      };
-      "OBJ_59" = {
-         isa = "PBXFileReference";
-         path = "CYaml.h";
-         sourceTree = "<group>";
-      };
-      "OBJ_6" = {
-         isa = "PBXFileReference";
-         explicitFileType = "sourcecode.swift";
-         path = "Package.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_60" = {
-         isa = "PBXFileReference";
-         path = "yaml.h";
-         sourceTree = "<group>";
-      };
-      "OBJ_61" = {
-         isa = "PBXFileReference";
-         name = "module.modulemap";
-         path = "/Users/devedbox/Documents/Github/GitCommit/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
-         sourceTree = "<group>";
-      };
-      "OBJ_62" = {
-         isa = "PBXFileReference";
-         explicitFileType = "sourcecode.swift";
-         name = "Package.swift";
-         path = "/Users/devedbox/Documents/Github/GitCommit/.build/checkouts/Yams.git-23197824484740316/Package.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_63" = {
-         isa = "PBXGroup";
-         children = (
-            "Yams::Yams::Product",
-            "Yams::CYaml::Product",
-            "GitCommit::git-commit::Product",
-            "GitCommit::GitCommitFramework::Product",
-            "GitCommit::GitCommitTests::Product"
-         );
-         name = "Products";
-         path = "";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "OBJ_7" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_8",
-            "OBJ_10"
-         );
-         name = "Sources";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_70" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_71",
-            "OBJ_72"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_71" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            DEFINES_MODULE = "NO";
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/CYaml_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "CYaml";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            TARGET_NAME = "CYaml";
-         };
-         name = "Debug";
-      };
-      "OBJ_72" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            DEFINES_MODULE = "NO";
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/CYaml_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "CYaml";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            TARGET_NAME = "CYaml";
-         };
-         name = "Release";
-      };
-      "OBJ_73" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_74",
-            "OBJ_75",
-            "OBJ_76",
-            "OBJ_77",
-            "OBJ_78",
-            "OBJ_79"
-         );
-      };
-      "OBJ_74" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_52";
-      };
-      "OBJ_75" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_53";
-      };
-      "OBJ_76" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_54";
-      };
-      "OBJ_77" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_55";
-      };
-      "OBJ_78" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_56";
-      };
-      "OBJ_79" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_57";
-      };
-      "OBJ_8" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_9"
-         );
-         name = "git-commit";
-         path = "Sources/git-commit";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_80" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-         );
-      };
-      "OBJ_82" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_83",
-            "OBJ_84"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_83" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/GitCommitFramework_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "GitCommitFramework";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "GitCommitFramework";
-         };
-         name = "Debug";
-      };
-      "OBJ_84" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/Yams.git-23197824484740316/Sources/CYaml/include",
-               "$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml"
-            );
-            INFOPLIST_FILE = "GitCommit.xcodeproj/GitCommitFramework_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-Xcc",
-               "-fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "GitCommitFramework";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "GitCommitFramework";
-         };
-         name = "Release";
-      };
-      "OBJ_85" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_86",
-            "OBJ_87",
-            "OBJ_88",
-            "OBJ_89",
-            "OBJ_90",
-            "OBJ_91",
-            "OBJ_92",
-            "OBJ_93",
-            "OBJ_94"
-         );
-      };
-      "OBJ_86" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_11";
-      };
-      "OBJ_87" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_13";
-      };
-      "OBJ_88" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_15";
-      };
-      "OBJ_89" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_16";
-      };
-      "OBJ_9" = {
-         isa = "PBXFileReference";
-         path = "main.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_90" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_18";
-      };
-      "OBJ_91" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_19";
-      };
-      "OBJ_92" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_20";
-      };
-      "OBJ_93" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_21";
-      };
-      "OBJ_94" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_22";
-      };
-      "OBJ_95" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_96",
-            "OBJ_97"
-         );
-      };
-      "OBJ_96" = {
-         isa = "PBXBuildFile";
-         fileRef = "Yams::Yams::Product";
-      };
-      "OBJ_97" = {
-         isa = "PBXBuildFile";
-         fileRef = "Yams::CYaml::Product";
-      };
-      "OBJ_98" = {
-         isa = "PBXTargetDependency";
-         target = "Yams::Yams";
-      };
-      "Yams::CYaml" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_70";
-         buildPhases = (
-            "OBJ_73",
-            "OBJ_80"
-         );
-         dependencies = (
-         );
-         name = "CYaml";
-         productName = "CYaml";
-         productReference = "Yams::CYaml::Product";
-         productType = "com.apple.product-type.framework";
-      };
-      "Yams::CYaml::Product" = {
-         isa = "PBXFileReference";
-         path = "CYaml.framework";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "Yams::SwiftPMPackageDescription" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_151";
-         buildPhases = (
-            "OBJ_154"
-         );
-         dependencies = (
-         );
-         name = "YamsPackageDescription";
-         productName = "YamsPackageDescription";
-         productType = "com.apple.product-type.framework";
-      };
-      "Yams::Yams" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_127";
-         buildPhases = (
-            "OBJ_130",
-            "OBJ_147"
-         );
-         dependencies = (
-            "OBJ_149"
-         );
-         name = "Yams";
-         productName = "Yams";
-         productReference = "Yams::Yams::Product";
-         productType = "com.apple.product-type.framework";
-      };
-      "Yams::Yams::Product" = {
-         isa = "PBXFileReference";
-         path = "Yams.framework";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-   };
-   rootObject = "OBJ_1";
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"GitCommit::GitCommitPackageTests::ProductTarget" /* GitCommitPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_107 /* Build configuration list for PBXAggregateTarget "GitCommitPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_110 /* PBXTargetDependency */,
+			);
+			name = GitCommitPackageTests;
+			productName = GitCommitPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		OBJ_105 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_116 /* GitCommitRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* GitCommitRuleTests.swift */; };
+		OBJ_117 /* GitCommitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* GitCommitTests.swift */; };
+		OBJ_118 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* XCTestManifests.swift */; };
+		OBJ_120 /* GitCommitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */; };
+		OBJ_121 /* Yams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::Yams::Product" /* Yams.framework */; };
+		OBJ_122 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
+		OBJ_130 /* Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* Constructor.swift */; };
+		OBJ_131 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* Decoder.swift */; };
+		OBJ_132 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Emitter.swift */; };
+		OBJ_133 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* Encoder.swift */; };
+		OBJ_134 /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* Mark.swift */; };
+		OBJ_135 /* Node.Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* Node.Mapping.swift */; };
+		OBJ_136 /* Node.Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* Node.Scalar.swift */; };
+		OBJ_137 /* Node.Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* Node.Sequence.swift */; };
+		OBJ_138 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* Node.swift */; };
+		OBJ_139 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* Parser.swift */; };
+		OBJ_140 /* Representer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* Representer.swift */; };
+		OBJ_141 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* Resolver.swift */; };
+		OBJ_142 /* String+Yams.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* String+Yams.swift */; };
+		OBJ_143 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Tag.swift */; };
+		OBJ_144 /* YamlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* YamlError.swift */; };
+		OBJ_145 /* shim.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* shim.swift */; };
+		OBJ_147 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
+		OBJ_154 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* Package.swift */; };
+		OBJ_160 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* main.swift */; };
+		OBJ_162 /* GitCommitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */; };
+		OBJ_163 /* Yams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::Yams::Product" /* Yams.framework */; };
+		OBJ_164 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
+		OBJ_73 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* api.c */; };
+		OBJ_74 /* emitter.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* emitter.c */; };
+		OBJ_75 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* parser.c */; };
+		OBJ_76 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* reader.c */; };
+		OBJ_77 /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* scanner.c */; };
+		OBJ_78 /* writer.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* writer.c */; };
+		OBJ_85 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Constant.swift */; };
+		OBJ_86 /* GitCommitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* GitCommitError.swift */; };
+		OBJ_87 /* GitCommitLintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GitCommitLintable.swift */; };
+		OBJ_88 /* GitCommitRuleRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* GitCommitRuleRepresentable.swift */; };
+		OBJ_89 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* GitCommit.swift */; };
+		OBJ_90 /* GitCommitLintOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* GitCommitLintOptions.swift */; };
+		OBJ_91 /* GitCommitRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* GitCommitRule.swift */; };
+		OBJ_92 /* GitCommitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* GitCommitType.swift */; };
+		OBJ_93 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* misc.swift */; };
+		OBJ_95 /* Yams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::Yams::Product" /* Yams.framework */; };
+		OBJ_96 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DC3BA0AA211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "GitCommit::GitCommitFramework";
+			remoteInfo = GitCommitFramework;
+		};
+		DC3BA0AB211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::Yams";
+			remoteInfo = Yams;
+		};
+		DC3BA0AC211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::CYaml";
+			remoteInfo = CYaml;
+		};
+		DC3BA0AD211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::CYaml";
+			remoteInfo = CYaml;
+		};
+		DC3BA0AE211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::Yams";
+			remoteInfo = Yams;
+		};
+		DC3BA0AF211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::CYaml";
+			remoteInfo = CYaml;
+		};
+		DC3BA0B0211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "GitCommit::GitCommitFramework";
+			remoteInfo = GitCommitFramework;
+		};
+		DC3BA0B1211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::Yams";
+			remoteInfo = Yams;
+		};
+		DC3BA0B2211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::CYaml";
+			remoteInfo = CYaml;
+		};
+		DC3BA0B3211A8EC5007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "GitCommit::GitCommitTests";
+			remoteInfo = GitCommitTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		"GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GitCommitFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"GitCommit::GitCommitTests::Product" /* GitCommitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GitCommitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"GitCommit::git-commit::Product" /* git-commit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "git-commit"; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_11 /* GitCommitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitError.swift; sourceTree = "<group>"; };
+		OBJ_13 /* GitCommitLintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitLintable.swift; sourceTree = "<group>"; };
+		OBJ_14 /* GitCommitRuleRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRuleRepresentable.swift; sourceTree = "<group>"; };
+		OBJ_16 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
+		OBJ_17 /* GitCommitLintOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitLintOptions.swift; sourceTree = "<group>"; };
+		OBJ_18 /* GitCommitRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRule.swift; sourceTree = "<group>"; };
+		OBJ_19 /* GitCommitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitType.swift; sourceTree = "<group>"; };
+		OBJ_20 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
+		OBJ_22 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_25 /* GitCommitRuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRuleTests.swift; sourceTree = "<group>"; };
+		OBJ_26 /* GitCommitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitTests.swift; sourceTree = "<group>"; };
+		OBJ_27 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Products */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Products; sourceTree = SOURCE_ROOT; };
+		OBJ_29 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = SOURCE_ROOT; };
+		OBJ_33 /* Constructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constructor.swift; sourceTree = "<group>"; };
+		OBJ_34 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		OBJ_35 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		OBJ_36 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		OBJ_37 /* Mark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark.swift; sourceTree = "<group>"; };
+		OBJ_38 /* Node.Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Mapping.swift; sourceTree = "<group>"; };
+		OBJ_39 /* Node.Scalar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Scalar.swift; sourceTree = "<group>"; };
+		OBJ_40 /* Node.Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Sequence.swift; sourceTree = "<group>"; };
+		OBJ_41 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		OBJ_42 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		OBJ_43 /* Representer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Representer.swift; sourceTree = "<group>"; };
+		OBJ_44 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		OBJ_45 /* String+Yams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Yams.swift"; sourceTree = "<group>"; };
+		OBJ_46 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		OBJ_47 /* YamlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamlError.swift; sourceTree = "<group>"; };
+		OBJ_48 /* shim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shim.swift; sourceTree = "<group>"; };
+		OBJ_51 /* api.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = api.c; sourceTree = "<group>"; };
+		OBJ_52 /* emitter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emitter.c; sourceTree = "<group>"; };
+		OBJ_53 /* parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
+		OBJ_54 /* reader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = reader.c; sourceTree = "<group>"; };
+		OBJ_55 /* scanner.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = scanner.c; sourceTree = "<group>"; };
+		OBJ_56 /* writer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = writer.c; sourceTree = "<group>"; };
+		OBJ_58 /* CYaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYaml.h; sourceTree = "<group>"; };
+		OBJ_59 /* yaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yaml.h; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_60 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/devedbox/Documents/Github/GitCommit/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap; sourceTree = "<group>"; };
+		OBJ_61 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/devedbox/Documents/Github/GitCommit/.build/checkouts/Yams.git--8109484021769299520/Package.swift"; sourceTree = "<group>"; };
+		OBJ_9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		"Yams::CYaml::Product" /* CYaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CYaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Yams::Yams::Product" /* Yams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Yams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_119 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_120 /* GitCommitFramework.framework in Frameworks */,
+				OBJ_121 /* Yams.framework in Frameworks */,
+				OBJ_122 /* CYaml.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_146 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_147 /* CYaml.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_161 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_162 /* GitCommitFramework.framework in Frameworks */,
+				OBJ_163 /* Yams.framework in Frameworks */,
+				OBJ_164 /* CYaml.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_95 /* Yams.framework in Frameworks */,
+				OBJ_96 /* CYaml.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_10 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* GitCommitError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		OBJ_12 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* GitCommitLintable.swift */,
+				OBJ_14 /* GitCommitRuleRepresentable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		OBJ_15 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_16 /* GitCommit.swift */,
+				OBJ_17 /* GitCommitLintOptions.swift */,
+				OBJ_18 /* GitCommitRule.swift */,
+				OBJ_19 /* GitCommitType.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		OBJ_21 /* git-commit */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_22 /* main.swift */,
+			);
+			name = "git-commit";
+			path = "Sources/git-commit";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_23 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_24 /* GitCommitTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_24 /* GitCommitTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_25 /* GitCommitRuleTests.swift */,
+				OBJ_26 /* GitCommitTests.swift */,
+				OBJ_27 /* XCTestManifests.swift */,
+			);
+			name = GitCommitTests;
+			path = Tests/GitCommitTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_30 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_31 /* Yams 1.0.0 */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_31 /* Yams 1.0.0 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_32 /* Yams */,
+				OBJ_49 /* CYaml */,
+				OBJ_61 /* Package.swift */,
+			);
+			name = "Yams 1.0.0";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_32 /* Yams */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_33 /* Constructor.swift */,
+				OBJ_34 /* Decoder.swift */,
+				OBJ_35 /* Emitter.swift */,
+				OBJ_36 /* Encoder.swift */,
+				OBJ_37 /* Mark.swift */,
+				OBJ_38 /* Node.Mapping.swift */,
+				OBJ_39 /* Node.Scalar.swift */,
+				OBJ_40 /* Node.Sequence.swift */,
+				OBJ_41 /* Node.swift */,
+				OBJ_42 /* Parser.swift */,
+				OBJ_43 /* Representer.swift */,
+				OBJ_44 /* Resolver.swift */,
+				OBJ_45 /* String+Yams.swift */,
+				OBJ_46 /* Tag.swift */,
+				OBJ_47 /* YamlError.swift */,
+				OBJ_48 /* shim.swift */,
+			);
+			name = Yams;
+			path = ".build/checkouts/Yams.git--8109484021769299520/Sources/Yams";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_49 /* CYaml */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_50 /* src */,
+				OBJ_57 /* include */,
+			);
+			name = CYaml;
+			path = ".build/checkouts/Yams.git--8109484021769299520/Sources/CYaml";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_23 /* Tests */,
+				OBJ_28 /* Products */,
+				OBJ_29 /* Scripts */,
+				OBJ_30 /* Dependencies */,
+				OBJ_62 /* Products */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_50 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_51 /* api.c */,
+				OBJ_52 /* emitter.c */,
+				OBJ_53 /* parser.c */,
+				OBJ_54 /* reader.c */,
+				OBJ_55 /* scanner.c */,
+				OBJ_56 /* writer.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		OBJ_57 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_58 /* CYaml.h */,
+				OBJ_59 /* yaml.h */,
+				OBJ_60 /* module.modulemap */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		OBJ_62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"GitCommit::git-commit::Product" /* git-commit */,
+				"GitCommit::GitCommitTests::Product" /* GitCommitTests.xctest */,
+				"Yams::Yams::Product" /* Yams.framework */,
+				"Yams::CYaml::Product" /* CYaml.framework */,
+				"GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* GitCommitFramework */,
+				OBJ_21 /* git-commit */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* GitCommitFramework */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Constant.swift */,
+				OBJ_10 /* Errors */,
+				OBJ_12 /* Protocols */,
+				OBJ_15 /* Types */,
+				OBJ_20 /* misc.swift */,
+			);
+			name = GitCommitFramework;
+			path = Sources/GitCommitFramework;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"GitCommit::GitCommitFramework" /* GitCommitFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_81 /* Build configuration list for PBXNativeTarget "GitCommitFramework" */;
+			buildPhases = (
+				OBJ_84 /* Sources */,
+				OBJ_94 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_97 /* PBXTargetDependency */,
+				OBJ_99 /* PBXTargetDependency */,
+			);
+			name = GitCommitFramework;
+			productName = GitCommitFramework;
+			productReference = "GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"GitCommit::GitCommitTests" /* GitCommitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_112 /* Build configuration list for PBXNativeTarget "GitCommitTests" */;
+			buildPhases = (
+				OBJ_115 /* Sources */,
+				OBJ_119 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_123 /* PBXTargetDependency */,
+				OBJ_124 /* PBXTargetDependency */,
+				OBJ_125 /* PBXTargetDependency */,
+			);
+			name = GitCommitTests;
+			productName = GitCommitTests;
+			productReference = "GitCommit::GitCommitTests::Product" /* GitCommitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"GitCommit::SwiftPMPackageDescription" /* GitCommitPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_101 /* Build configuration list for PBXNativeTarget "GitCommitPackageDescription" */;
+			buildPhases = (
+				OBJ_104 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GitCommitPackageDescription;
+			productName = GitCommitPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"GitCommit::git-commit" /* git-commit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_156 /* Build configuration list for PBXNativeTarget "git-commit" */;
+			buildPhases = (
+				OBJ_159 /* Sources */,
+				OBJ_161 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_165 /* PBXTargetDependency */,
+				OBJ_166 /* PBXTargetDependency */,
+				OBJ_167 /* PBXTargetDependency */,
+			);
+			name = "git-commit";
+			productName = git_commit;
+			productReference = "GitCommit::git-commit::Product" /* git-commit */;
+			productType = "com.apple.product-type.tool";
+		};
+		"Yams::CYaml" /* CYaml */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_69 /* Build configuration list for PBXNativeTarget "CYaml" */;
+			buildPhases = (
+				OBJ_72 /* Sources */,
+				OBJ_79 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CYaml;
+			productName = CYaml;
+			productReference = "Yams::CYaml::Product" /* CYaml.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Yams::SwiftPMPackageDescription" /* YamsPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_150 /* Build configuration list for PBXNativeTarget "YamsPackageDescription" */;
+			buildPhases = (
+				OBJ_153 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YamsPackageDescription;
+			productName = YamsPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"Yams::Yams" /* Yams */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_126 /* Build configuration list for PBXNativeTarget "Yams" */;
+			buildPhases = (
+				OBJ_129 /* Sources */,
+				OBJ_146 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_148 /* PBXTargetDependency */,
+			);
+			name = Yams;
+			productName = Yams;
+			productReference = "Yams::Yams::Product" /* Yams.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "GitCommit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_62 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"Yams::CYaml" /* CYaml */,
+				"GitCommit::GitCommitFramework" /* GitCommitFramework */,
+				"GitCommit::SwiftPMPackageDescription" /* GitCommitPackageDescription */,
+				"GitCommit::GitCommitPackageTests::ProductTarget" /* GitCommitPackageTests */,
+				"GitCommit::GitCommitTests" /* GitCommitTests */,
+				"Yams::Yams" /* Yams */,
+				"Yams::SwiftPMPackageDescription" /* YamsPackageDescription */,
+				"GitCommit::git-commit" /* git-commit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_105 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_115 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_116 /* GitCommitRuleTests.swift in Sources */,
+				OBJ_117 /* GitCommitTests.swift in Sources */,
+				OBJ_118 /* XCTestManifests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_129 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_130 /* Constructor.swift in Sources */,
+				OBJ_131 /* Decoder.swift in Sources */,
+				OBJ_132 /* Emitter.swift in Sources */,
+				OBJ_133 /* Encoder.swift in Sources */,
+				OBJ_134 /* Mark.swift in Sources */,
+				OBJ_135 /* Node.Mapping.swift in Sources */,
+				OBJ_136 /* Node.Scalar.swift in Sources */,
+				OBJ_137 /* Node.Sequence.swift in Sources */,
+				OBJ_138 /* Node.swift in Sources */,
+				OBJ_139 /* Parser.swift in Sources */,
+				OBJ_140 /* Representer.swift in Sources */,
+				OBJ_141 /* Resolver.swift in Sources */,
+				OBJ_142 /* String+Yams.swift in Sources */,
+				OBJ_143 /* Tag.swift in Sources */,
+				OBJ_144 /* YamlError.swift in Sources */,
+				OBJ_145 /* shim.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_153 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_154 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_159 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_160 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_73 /* api.c in Sources */,
+				OBJ_74 /* emitter.c in Sources */,
+				OBJ_75 /* parser.c in Sources */,
+				OBJ_76 /* reader.c in Sources */,
+				OBJ_77 /* scanner.c in Sources */,
+				OBJ_78 /* writer.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_85 /* Constant.swift in Sources */,
+				OBJ_86 /* GitCommitError.swift in Sources */,
+				OBJ_87 /* GitCommitLintable.swift in Sources */,
+				OBJ_88 /* GitCommitRuleRepresentable.swift in Sources */,
+				OBJ_89 /* GitCommit.swift in Sources */,
+				OBJ_90 /* GitCommitLintOptions.swift in Sources */,
+				OBJ_91 /* GitCommitRule.swift in Sources */,
+				OBJ_92 /* GitCommitType.swift in Sources */,
+				OBJ_93 /* misc.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_110 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "GitCommit::GitCommitTests" /* GitCommitTests */;
+			targetProxy = DC3BA0B3211A8EC5007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_123 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "GitCommit::GitCommitFramework" /* GitCommitFramework */;
+			targetProxy = DC3BA0B0211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_124 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Yams::Yams" /* Yams */;
+			targetProxy = DC3BA0B1211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_125 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Yams::CYaml" /* CYaml */;
+			targetProxy = DC3BA0B2211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_148 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Yams::CYaml" /* CYaml */;
+			targetProxy = DC3BA0AC211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_165 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "GitCommit::GitCommitFramework" /* GitCommitFramework */;
+			targetProxy = DC3BA0AA211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_166 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Yams::Yams" /* Yams */;
+			targetProxy = DC3BA0AE211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_167 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Yams::CYaml" /* CYaml */;
+			targetProxy = DC3BA0AF211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Yams::Yams" /* Yams */;
+			targetProxy = DC3BA0AB211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+		OBJ_99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Yams::CYaml" /* CYaml */;
+			targetProxy = DC3BA0AD211A8EC4007EDB93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_102 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		OBJ_103 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		OBJ_108 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_113 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = GitCommitTests;
+			};
+			name = Debug;
+		};
+		OBJ_114 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = GitCommitTests;
+			};
+			name = Release;
+		};
+		OBJ_127 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/Yams_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = Yams;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.2;
+				TARGET_NAME = Yams;
+			};
+			name = Debug;
+		};
+		OBJ_128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/Yams_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = Yams;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.2;
+				TARGET_NAME = Yams;
+			};
+			name = Release;
+		};
+		OBJ_151 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_152 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_157 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/git_commit_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = "git-commit";
+			};
+			name = Debug;
+		};
+		OBJ_158 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/git_commit_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = "git-commit";
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/CYaml_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CYaml;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				TARGET_NAME = CYaml;
+			};
+			name = Debug;
+		};
+		OBJ_71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/CYaml_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CYaml;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				TARGET_NAME = CYaml;
+			};
+			name = Release;
+		};
+		OBJ_82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitFramework_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = GitCommitFramework;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = GitCommitFramework;
+			};
+			name = Debug;
+		};
+		OBJ_83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
+				);
+				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitFramework_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = GitCommitFramework;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = GitCommitFramework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_101 /* Build configuration list for PBXNativeTarget "GitCommitPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_102 /* Debug */,
+				OBJ_103 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_107 /* Build configuration list for PBXAggregateTarget "GitCommitPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_108 /* Debug */,
+				OBJ_109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_112 /* Build configuration list for PBXNativeTarget "GitCommitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_113 /* Debug */,
+				OBJ_114 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_126 /* Build configuration list for PBXNativeTarget "Yams" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_127 /* Debug */,
+				OBJ_128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_150 /* Build configuration list for PBXNativeTarget "YamsPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_151 /* Debug */,
+				OBJ_152 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_156 /* Build configuration list for PBXNativeTarget "git-commit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_157 /* Debug */,
+				OBJ_158 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "GitCommit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_69 /* Build configuration list for PBXNativeTarget "CYaml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_70 /* Debug */,
+				OBJ_71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_81 /* Build configuration list for PBXNativeTarget "GitCommitFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_82 /* Debug */,
+				OBJ_83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
 }

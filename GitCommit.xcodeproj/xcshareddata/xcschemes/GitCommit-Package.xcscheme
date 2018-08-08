@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "GitCommit::git-commit"
+               BuildableName = "git-commit"
+               BlueprintName = "git-commit"
+               ReferencedContainer = "container:GitCommit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "Yams::Yams"
                BuildableName = "Yams.framework"
                BlueprintName = "Yams"
@@ -31,20 +45,6 @@
                BlueprintIdentifier = "Yams::CYaml"
                BuildableName = "CYaml.framework"
                BlueprintName = "CYaml"
-               ReferencedContainer = "container:GitCommit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "GitCommit::git-commit"
-               BuildableName = "git-commit"
-               BlueprintName = "git-commit"
                ReferencedContainer = "container:GitCommit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -97,9 +97,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Yams::Yams"
-            BuildableName = "Yams.framework"
-            BlueprintName = "Yams"
+            BlueprintIdentifier = "GitCommit::git-commit"
+            BuildableName = "git-commit"
+            BlueprintName = "git-commit"
             ReferencedContainer = "container:GitCommit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
