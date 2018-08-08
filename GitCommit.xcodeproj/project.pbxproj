@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		DC3BA0BF211AC3E5007EDB93 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3BA0BE211AC3E5007EDB93 /* misc.swift */; };
 		OBJ_105 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_116 /* GitCommitRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* GitCommitRuleTests.swift */; };
 		OBJ_117 /* GitCommitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* GitCommitTests.swift */; };
@@ -28,112 +29,112 @@
 		OBJ_120 /* GitCommitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */; };
 		OBJ_121 /* Yams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::Yams::Product" /* Yams.framework */; };
 		OBJ_122 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
-		OBJ_130 /* Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* Constructor.swift */; };
-		OBJ_131 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* Decoder.swift */; };
-		OBJ_132 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Emitter.swift */; };
-		OBJ_133 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* Encoder.swift */; };
-		OBJ_134 /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* Mark.swift */; };
-		OBJ_135 /* Node.Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* Node.Mapping.swift */; };
-		OBJ_136 /* Node.Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* Node.Scalar.swift */; };
-		OBJ_137 /* Node.Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* Node.Sequence.swift */; };
-		OBJ_138 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* Node.swift */; };
-		OBJ_139 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* Parser.swift */; };
-		OBJ_140 /* Representer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* Representer.swift */; };
-		OBJ_141 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* Resolver.swift */; };
-		OBJ_142 /* String+Yams.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* String+Yams.swift */; };
-		OBJ_143 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Tag.swift */; };
-		OBJ_144 /* YamlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* YamlError.swift */; };
-		OBJ_145 /* shim.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* shim.swift */; };
+		OBJ_130 /* Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* Constructor.swift */; };
+		OBJ_131 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Decoder.swift */; };
+		OBJ_132 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* Emitter.swift */; };
+		OBJ_133 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* Encoder.swift */; };
+		OBJ_134 /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* Mark.swift */; };
+		OBJ_135 /* Node.Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* Node.Mapping.swift */; };
+		OBJ_136 /* Node.Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* Node.Scalar.swift */; };
+		OBJ_137 /* Node.Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* Node.Sequence.swift */; };
+		OBJ_138 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* Node.swift */; };
+		OBJ_139 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* Parser.swift */; };
+		OBJ_140 /* Representer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* Representer.swift */; };
+		OBJ_141 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* Resolver.swift */; };
+		OBJ_142 /* String+Yams.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* String+Yams.swift */; };
+		OBJ_143 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* Tag.swift */; };
+		OBJ_144 /* YamlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* YamlError.swift */; };
+		OBJ_145 /* shim.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* shim.swift */; };
 		OBJ_147 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
 		OBJ_154 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* Package.swift */; };
-		OBJ_160 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* main.swift */; };
+		OBJ_160 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_162 /* GitCommitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */; };
 		OBJ_163 /* Yams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::Yams::Product" /* Yams.framework */; };
 		OBJ_164 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
-		OBJ_73 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* api.c */; };
-		OBJ_74 /* emitter.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* emitter.c */; };
-		OBJ_75 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* parser.c */; };
-		OBJ_76 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* reader.c */; };
-		OBJ_77 /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* scanner.c */; };
-		OBJ_78 /* writer.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* writer.c */; };
-		OBJ_85 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Constant.swift */; };
-		OBJ_86 /* GitCommitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* GitCommitError.swift */; };
-		OBJ_87 /* GitCommitLintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GitCommitLintable.swift */; };
-		OBJ_88 /* GitCommitRuleRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* GitCommitRuleRepresentable.swift */; };
-		OBJ_89 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* GitCommit.swift */; };
-		OBJ_90 /* GitCommitLintOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* GitCommitLintOptions.swift */; };
-		OBJ_91 /* GitCommitRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* GitCommitRule.swift */; };
-		OBJ_92 /* GitCommitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* GitCommitType.swift */; };
-		OBJ_93 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* misc.swift */; };
+		OBJ_73 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* api.c */; };
+		OBJ_74 /* emitter.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* emitter.c */; };
+		OBJ_75 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* parser.c */; };
+		OBJ_76 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* reader.c */; };
+		OBJ_77 /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* scanner.c */; };
+		OBJ_78 /* writer.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* writer.c */; };
+		OBJ_85 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Constant.swift */; };
+		OBJ_86 /* GitCommitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GitCommitError.swift */; };
+		OBJ_87 /* GitCommitLintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* GitCommitLintable.swift */; };
+		OBJ_88 /* GitCommitRuleRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* GitCommitRuleRepresentable.swift */; };
+		OBJ_89 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* GitCommit.swift */; };
+		OBJ_90 /* GitCommitLintOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* GitCommitLintOptions.swift */; };
+		OBJ_91 /* GitCommitRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* GitCommitRule.swift */; };
+		OBJ_92 /* GitCommitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* GitCommitType.swift */; };
+		OBJ_93 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* misc.swift */; };
 		OBJ_95 /* Yams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::Yams::Product" /* Yams.framework */; };
 		OBJ_96 /* CYaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Yams::CYaml::Product" /* CYaml.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DC3BA0AA211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+		DC3BA0B4211A98C3007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::Yams";
+			remoteInfo = Yams;
+		};
+		DC3BA0B5211A98C3007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::CYaml";
+			remoteInfo = CYaml;
+		};
+		DC3BA0B6211A98C3007EDB93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Yams::CYaml";
+			remoteInfo = CYaml;
+		};
+		DC3BA0B7211A98C3007EDB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "GitCommit::GitCommitFramework";
 			remoteInfo = GitCommitFramework;
 		};
-		DC3BA0AB211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+		DC3BA0B8211A98C3007EDB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Yams::Yams";
 			remoteInfo = Yams;
 		};
-		DC3BA0AC211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+		DC3BA0B9211A98C3007EDB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Yams::CYaml";
 			remoteInfo = CYaml;
 		};
-		DC3BA0AD211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Yams::CYaml";
-			remoteInfo = CYaml;
-		};
-		DC3BA0AE211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Yams::Yams";
-			remoteInfo = Yams;
-		};
-		DC3BA0AF211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Yams::CYaml";
-			remoteInfo = CYaml;
-		};
-		DC3BA0B0211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+		DC3BA0BA211A98C3007EDB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "GitCommit::GitCommitFramework";
 			remoteInfo = GitCommitFramework;
 		};
-		DC3BA0B1211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+		DC3BA0BB211A98C3007EDB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Yams::Yams";
 			remoteInfo = Yams;
 		};
-		DC3BA0B2211A8EC4007EDB93 /* PBXContainerItemProxy */ = {
+		DC3BA0BC211A98C3007EDB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Yams::CYaml";
 			remoteInfo = CYaml;
 		};
-		DC3BA0B3211A8EC5007EDB93 /* PBXContainerItemProxy */ = {
+		DC3BA0BD211A98C4007EDB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -143,53 +144,54 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC3BA0BE211AC3E5007EDB93 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
 		"GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GitCommitFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"GitCommit::GitCommitTests::Product" /* GitCommitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = GitCommitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"GitCommit::git-commit::Product" /* git-commit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "git-commit"; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_11 /* GitCommitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitError.swift; sourceTree = "<group>"; };
-		OBJ_13 /* GitCommitLintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitLintable.swift; sourceTree = "<group>"; };
-		OBJ_14 /* GitCommitRuleRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRuleRepresentable.swift; sourceTree = "<group>"; };
-		OBJ_16 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
-		OBJ_17 /* GitCommitLintOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitLintOptions.swift; sourceTree = "<group>"; };
-		OBJ_18 /* GitCommitRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRule.swift; sourceTree = "<group>"; };
-		OBJ_19 /* GitCommitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitType.swift; sourceTree = "<group>"; };
-		OBJ_20 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
-		OBJ_22 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_11 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		OBJ_13 /* GitCommitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitError.swift; sourceTree = "<group>"; };
+		OBJ_15 /* GitCommitLintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitLintable.swift; sourceTree = "<group>"; };
+		OBJ_16 /* GitCommitRuleRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRuleRepresentable.swift; sourceTree = "<group>"; };
+		OBJ_18 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
+		OBJ_19 /* GitCommitLintOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitLintOptions.swift; sourceTree = "<group>"; };
+		OBJ_20 /* GitCommitRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRule.swift; sourceTree = "<group>"; };
+		OBJ_21 /* GitCommitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitType.swift; sourceTree = "<group>"; };
+		OBJ_22 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
 		OBJ_25 /* GitCommitRuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitRuleTests.swift; sourceTree = "<group>"; };
 		OBJ_26 /* GitCommitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitTests.swift; sourceTree = "<group>"; };
 		OBJ_27 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_28 /* Products */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Products; sourceTree = SOURCE_ROOT; };
 		OBJ_29 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = SOURCE_ROOT; };
-		OBJ_33 /* Constructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constructor.swift; sourceTree = "<group>"; };
-		OBJ_34 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
-		OBJ_35 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
-		OBJ_36 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
-		OBJ_37 /* Mark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark.swift; sourceTree = "<group>"; };
-		OBJ_38 /* Node.Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Mapping.swift; sourceTree = "<group>"; };
-		OBJ_39 /* Node.Scalar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Scalar.swift; sourceTree = "<group>"; };
-		OBJ_40 /* Node.Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Sequence.swift; sourceTree = "<group>"; };
-		OBJ_41 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		OBJ_42 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		OBJ_43 /* Representer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Representer.swift; sourceTree = "<group>"; };
-		OBJ_44 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
-		OBJ_45 /* String+Yams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Yams.swift"; sourceTree = "<group>"; };
-		OBJ_46 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		OBJ_47 /* YamlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamlError.swift; sourceTree = "<group>"; };
-		OBJ_48 /* shim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shim.swift; sourceTree = "<group>"; };
-		OBJ_51 /* api.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = api.c; sourceTree = "<group>"; };
-		OBJ_52 /* emitter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emitter.c; sourceTree = "<group>"; };
-		OBJ_53 /* parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
-		OBJ_54 /* reader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = reader.c; sourceTree = "<group>"; };
-		OBJ_55 /* scanner.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = scanner.c; sourceTree = "<group>"; };
-		OBJ_56 /* writer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = writer.c; sourceTree = "<group>"; };
-		OBJ_58 /* CYaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYaml.h; sourceTree = "<group>"; };
-		OBJ_59 /* yaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yaml.h; sourceTree = "<group>"; };
+		OBJ_34 /* api.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = api.c; sourceTree = "<group>"; };
+		OBJ_35 /* emitter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emitter.c; sourceTree = "<group>"; };
+		OBJ_36 /* parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
+		OBJ_37 /* reader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = reader.c; sourceTree = "<group>"; };
+		OBJ_38 /* scanner.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = scanner.c; sourceTree = "<group>"; };
+		OBJ_39 /* writer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = writer.c; sourceTree = "<group>"; };
+		OBJ_41 /* CYaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYaml.h; sourceTree = "<group>"; };
+		OBJ_42 /* yaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yaml.h; sourceTree = "<group>"; };
+		OBJ_43 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/devedbox/Documents/Github/GitCommit/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap; sourceTree = "<group>"; };
+		OBJ_45 /* Constructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constructor.swift; sourceTree = "<group>"; };
+		OBJ_46 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		OBJ_47 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		OBJ_48 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		OBJ_49 /* Mark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark.swift; sourceTree = "<group>"; };
+		OBJ_50 /* Node.Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Mapping.swift; sourceTree = "<group>"; };
+		OBJ_51 /* Node.Scalar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Scalar.swift; sourceTree = "<group>"; };
+		OBJ_52 /* Node.Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.Sequence.swift; sourceTree = "<group>"; };
+		OBJ_53 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		OBJ_54 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		OBJ_55 /* Representer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Representer.swift; sourceTree = "<group>"; };
+		OBJ_56 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		OBJ_57 /* String+Yams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Yams.swift"; sourceTree = "<group>"; };
+		OBJ_58 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		OBJ_59 /* YamlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamlError.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_60 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/devedbox/Documents/Github/GitCommit/GitCommit.xcodeproj/GeneratedModuleMap/CYaml/module.modulemap; sourceTree = "<group>"; };
-		OBJ_61 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/devedbox/Documents/Github/GitCommit/.build/checkouts/Yams.git--8109484021769299520/Package.swift"; sourceTree = "<group>"; };
-		OBJ_9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		OBJ_60 /* shim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shim.swift; sourceTree = "<group>"; };
+		OBJ_61 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/devedbox/Documents/Github/GitCommit/.build/checkouts/Yams.git-3184215128363001204/Package.swift"; sourceTree = "<group>"; };
+		OBJ_9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		"Yams::CYaml::Product" /* CYaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CYaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Yams::Yams::Product" /* Yams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Yams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Yams::Yams::Product" /* Yams.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Yams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,42 +242,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_10 /* Errors */ = {
+		OBJ_10 /* GitCommitFramework */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_11 /* GitCommitError.swift */,
+				OBJ_11 /* Constant.swift */,
+				OBJ_12 /* Errors */,
+				OBJ_14 /* Protocols */,
+				OBJ_17 /* Types */,
+				OBJ_22 /* misc.swift */,
+			);
+			name = GitCommitFramework;
+			path = Sources/GitCommitFramework;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_12 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* GitCommitError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		OBJ_12 /* Protocols */ = {
+		OBJ_14 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_13 /* GitCommitLintable.swift */,
-				OBJ_14 /* GitCommitRuleRepresentable.swift */,
+				OBJ_15 /* GitCommitLintable.swift */,
+				OBJ_16 /* GitCommitRuleRepresentable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		OBJ_15 /* Types */ = {
+		OBJ_17 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_16 /* GitCommit.swift */,
-				OBJ_17 /* GitCommitLintOptions.swift */,
-				OBJ_18 /* GitCommitRule.swift */,
-				OBJ_19 /* GitCommitType.swift */,
+				OBJ_18 /* GitCommit.swift */,
+				OBJ_19 /* GitCommitLintOptions.swift */,
+				OBJ_20 /* GitCommitRule.swift */,
+				OBJ_21 /* GitCommitType.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
-		};
-		OBJ_21 /* git-commit */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_22 /* main.swift */,
-			);
-			name = "git-commit";
-			path = "Sources/git-commit";
-			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_23 /* Tests */ = {
 			isa = PBXGroup;
@@ -307,45 +313,68 @@
 		OBJ_31 /* Yams 1.0.0 */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_32 /* Yams */,
-				OBJ_49 /* CYaml */,
+				OBJ_32 /* CYaml */,
+				OBJ_44 /* Yams */,
 				OBJ_61 /* Package.swift */,
 			);
 			name = "Yams 1.0.0";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_32 /* Yams */ = {
+		OBJ_32 /* CYaml */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_33 /* Constructor.swift */,
-				OBJ_34 /* Decoder.swift */,
-				OBJ_35 /* Emitter.swift */,
-				OBJ_36 /* Encoder.swift */,
-				OBJ_37 /* Mark.swift */,
-				OBJ_38 /* Node.Mapping.swift */,
-				OBJ_39 /* Node.Scalar.swift */,
-				OBJ_40 /* Node.Sequence.swift */,
-				OBJ_41 /* Node.swift */,
-				OBJ_42 /* Parser.swift */,
-				OBJ_43 /* Representer.swift */,
-				OBJ_44 /* Resolver.swift */,
-				OBJ_45 /* String+Yams.swift */,
-				OBJ_46 /* Tag.swift */,
-				OBJ_47 /* YamlError.swift */,
-				OBJ_48 /* shim.swift */,
-			);
-			name = Yams;
-			path = ".build/checkouts/Yams.git--8109484021769299520/Sources/Yams";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_49 /* CYaml */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_50 /* src */,
-				OBJ_57 /* include */,
+				OBJ_33 /* src */,
+				OBJ_40 /* include */,
 			);
 			name = CYaml;
-			path = ".build/checkouts/Yams.git--8109484021769299520/Sources/CYaml";
+			path = ".build/checkouts/Yams.git-3184215128363001204/Sources/CYaml";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_33 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_34 /* api.c */,
+				OBJ_35 /* emitter.c */,
+				OBJ_36 /* parser.c */,
+				OBJ_37 /* reader.c */,
+				OBJ_38 /* scanner.c */,
+				OBJ_39 /* writer.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		OBJ_40 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_41 /* CYaml.h */,
+				OBJ_42 /* yaml.h */,
+				OBJ_43 /* module.modulemap */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		OBJ_44 /* Yams */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_45 /* Constructor.swift */,
+				OBJ_46 /* Decoder.swift */,
+				OBJ_47 /* Emitter.swift */,
+				OBJ_48 /* Encoder.swift */,
+				OBJ_49 /* Mark.swift */,
+				OBJ_50 /* Node.Mapping.swift */,
+				OBJ_51 /* Node.Scalar.swift */,
+				OBJ_52 /* Node.Sequence.swift */,
+				OBJ_53 /* Node.swift */,
+				OBJ_54 /* Parser.swift */,
+				OBJ_55 /* Representer.swift */,
+				OBJ_56 /* Resolver.swift */,
+				OBJ_57 /* String+Yams.swift */,
+				OBJ_58 /* Tag.swift */,
+				OBJ_59 /* YamlError.swift */,
+				OBJ_60 /* shim.swift */,
+			);
+			name = Yams;
+			path = ".build/checkouts/Yams.git-3184215128363001204/Sources/Yams";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_5 /*  */ = {
@@ -362,37 +391,14 @@
 			name = "";
 			sourceTree = "<group>";
 		};
-		OBJ_50 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_51 /* api.c */,
-				OBJ_52 /* emitter.c */,
-				OBJ_53 /* parser.c */,
-				OBJ_54 /* reader.c */,
-				OBJ_55 /* scanner.c */,
-				OBJ_56 /* writer.c */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		OBJ_57 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_58 /* CYaml.h */,
-				OBJ_59 /* yaml.h */,
-				OBJ_60 /* module.modulemap */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
 		OBJ_62 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"GitCommit::git-commit::Product" /* git-commit */,
 				"GitCommit::GitCommitTests::Product" /* GitCommitTests.xctest */,
-				"Yams::Yams::Product" /* Yams.framework */,
-				"Yams::CYaml::Product" /* CYaml.framework */,
 				"GitCommit::GitCommitFramework::Product" /* GitCommitFramework.framework */,
+				"Yams::Yams::Product" /* Yams.framework */,
+				"GitCommit::git-commit::Product" /* git-commit */,
+				"Yams::CYaml::Product" /* CYaml.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -400,23 +406,20 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* GitCommitFramework */,
-				OBJ_21 /* git-commit */,
+				OBJ_8 /* git-commit */,
+				OBJ_10 /* GitCommitFramework */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_8 /* GitCommitFramework */ = {
+		OBJ_8 /* git-commit */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* Constant.swift */,
-				OBJ_10 /* Errors */,
-				OBJ_12 /* Protocols */,
-				OBJ_15 /* Types */,
-				OBJ_20 /* misc.swift */,
+				OBJ_9 /* main.swift */,
+				DC3BA0BE211AC3E5007EDB93 /* misc.swift */,
 			);
-			name = GitCommitFramework;
-			path = Sources/GitCommitFramework;
+			name = "git-commit";
+			path = "Sources/git-commit";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -626,6 +629,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_160 /* main.swift in Sources */,
+				DC3BA0BF211AC3E5007EDB93 /* misc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,52 +668,52 @@
 		OBJ_110 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "GitCommit::GitCommitTests" /* GitCommitTests */;
-			targetProxy = DC3BA0B3211A8EC5007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0BD211A98C4007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_123 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "GitCommit::GitCommitFramework" /* GitCommitFramework */;
-			targetProxy = DC3BA0B0211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0BA211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_124 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Yams::Yams" /* Yams */;
-			targetProxy = DC3BA0B1211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0BB211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_125 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Yams::CYaml" /* CYaml */;
-			targetProxy = DC3BA0B2211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0BC211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_148 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Yams::CYaml" /* CYaml */;
-			targetProxy = DC3BA0AC211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0B5211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_165 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "GitCommit::GitCommitFramework" /* GitCommitFramework */;
-			targetProxy = DC3BA0AA211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0B7211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_166 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Yams::Yams" /* Yams */;
-			targetProxy = DC3BA0AE211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0B8211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_167 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Yams::CYaml" /* CYaml */;
-			targetProxy = DC3BA0AF211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0B9211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Yams::Yams" /* Yams */;
-			targetProxy = DC3BA0AB211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0B4211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 		OBJ_99 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Yams::CYaml" /* CYaml */;
-			targetProxy = DC3BA0AD211A8EC4007EDB93 /* PBXContainerItemProxy */;
+			targetProxy = DC3BA0B6211A98C3007EDB93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -719,7 +723,7 @@
 			buildSettings = {
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -728,7 +732,7 @@
 			buildSettings = {
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -754,7 +758,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitTests_Info.plist;
@@ -778,7 +782,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitTests_Info.plist;
@@ -802,7 +806,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/Yams_Info.plist;
@@ -815,7 +819,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = Yams;
 			};
 			name = Debug;
@@ -830,7 +834,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/Yams_Info.plist;
@@ -843,7 +847,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGET_NAME = Yams;
 			};
 			name = Release;
@@ -875,7 +879,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/git_commit_Info.plist;
@@ -900,7 +904,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/git_commit_Info.plist;
@@ -973,7 +977,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/CYaml_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
@@ -1000,7 +1004,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/CYaml_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
@@ -1026,7 +1030,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitFramework_Info.plist;
@@ -1054,7 +1058,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/Yams.git--8109484021769299520/Sources/CYaml/include",
+					"$(SRCROOT)/.build/checkouts/Yams.git-3184215128363001204/Sources/CYaml/include",
 					"$(SRCROOT)/GitCommit.xcodeproj/GeneratedModuleMap/CYaml",
 				);
 				INFOPLIST_FILE = GitCommit.xcodeproj/GitCommitFramework_Info.plist;
