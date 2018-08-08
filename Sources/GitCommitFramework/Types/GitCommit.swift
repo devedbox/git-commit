@@ -65,8 +65,12 @@ extension GitCommit: CustomStringConvertible {
 // MARK: - Bootstrap.
 
 extension GitCommit {
+    /// Bootstrap and setup the git commit hook to .git/hooks and creates a config file at current dir if
+    /// needed. Specify `allowsOverriding` to override the hook if the hook already be set.
     ///
-    public static func bootstrap() throws {
+    /// - Parameters:
+    ///     - allowsOverriding: True to allow overriding existed hook file.
+    public static func bootstrap(allowsOverriding: Bool = false) throws {
         let cwd = FileManager.default.currentDirectoryPath
         let commitMsgHookContent = """
         #!/bin/bash
@@ -85,7 +89,12 @@ extension GitCommit {
         }
         
         let commitMsgHookPath = cwd + "/.git/hooks/commit-msg"
-        if FileManager.default.fileExists(atPath: commitMsgHookPath), case let commitMsgHook? = try? String(contentsOfFile: commitMsgHookPath), commitMsgHook == commitMsgHookContent {
+        
+        if  FileManager.default.fileExists(atPath: commitMsgHookPath),
+            case let commitMsgHook? = try? String(contentsOfFile: commitMsgHookPath),
+            commitMsgHook == commitMsgHookContent,
+            !allowsOverriding
+        {
             throw GitCommitError.duplicateBootstrap
         }
         
