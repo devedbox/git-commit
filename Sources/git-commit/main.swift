@@ -50,7 +50,7 @@ case "init": // Bootstrap.
         case GitCommitError.duplicateBootstrap:
             echo(.warning, message:
                 """
-                \(GitCommitError.duplicateBootstrap)
+                \(GitCommitError.duplicateBootstrap) Using '--override' to override older one.
                 """)
         default:
             break
