@@ -117,7 +117,7 @@ extension GitCommit {
               allows-ascii-punctuation: true
             # ignoring-pattern: # Default is nil.
             # ignores-hash-anchored-lines: true # Default is false.
-            # allowsReverting: true # Default is true.
+            # allows-revert: true # Default is true.
             # ignores-trailing-new-lines: true # Default is false.
             """
             FileManager.default.createFile(atPath: configPath,
