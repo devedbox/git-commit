@@ -6,4 +6,4 @@
 //
 
 /// The version string of `GitCommit`.
-internal var GitCommitVersion = "0.0.8"
+internal var GitCommitVersion = "0.0.9"
