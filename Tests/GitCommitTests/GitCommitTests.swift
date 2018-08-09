@@ -12,6 +12,7 @@ import Foundation
 final class GitCommitTests: XCTestCase {
     
     static var allTests = [
+        ("testBootstrap", testBootstrap),
         ("testVersion", testVersion),
         ("testTrimmingEmptyString", testTrimmingEmptyString),
         ("testReadFromFile", testReadFromFile),
