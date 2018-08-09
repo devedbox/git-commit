@@ -12,6 +12,7 @@ import Foundation
 final class GitCommitTests: XCTestCase {
     
     static var allTests = [
+        ("testVersion", testVersion),
         ("testTrimmingEmptyString", testTrimmingEmptyString),
         ("testReadFromFile", testReadFromFile),
         ("testCommits2String", testCommits2String),
@@ -29,6 +30,21 @@ final class GitCommitTests: XCTestCase {
     let trimmingRule = GitCommitRule(ignoresTrailingNewLines: true)
     let anchoredRule = GitCommitRule(ignoresHashAnchoredLines: true)
     let trimmingAnchoredRule = GitCommitRule(ignoresHashAnchoredLines: true, ignoresTrailingNewLines: true)
+    
+    func testBootstrap() {
+        do {
+            try GitCommit.bootstrap()
+        } catch GitCommitError.gitRepositoryNotExist(atPath: _) {
+            XCTAssertTrue(true)
+        } catch let error {
+            XCTAssertFalse(error.localizedDescription.isEmpty)
+            XCTAssertTrue(true)
+        }
+    }
+    
+    func testVersion() {
+        XCTAssertEqual(GitCommitVersion, GitCommit.version)
+    }
     
     func testTrimmingEmptyString() {
         let string = ""

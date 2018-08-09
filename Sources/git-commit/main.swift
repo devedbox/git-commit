@@ -34,7 +34,7 @@ case "version": // Shows the version info.
 case "init": // Bootstrap.
     let allowsOverriding = commands.index(1, offsetBy: 1, limitedBy: commands.index(before: commands.endIndex)).map { commands[$0] == "--override" } ?? false
     
-    notifyArgumentsErrorIfNeeded(args: Array(CommandLine.arguments[(allowsOverriding ? 3 : 2)...]))
+    notifyArgumentsErrorIfNeeded(args: Array(commands[(allowsOverriding ? 3 : 2)...]))
     
     do {
         try GitCommit.bootstrap(allowsOverriding: allowsOverriding)
