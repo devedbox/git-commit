@@ -12,6 +12,7 @@ import Foundation
 final class GitCommitTests: XCTestCase {
     
     static var allTests = [
+        ("testErrorDescs", testErrorDescs),
         ("testBootstrap", testBootstrap),
         ("testVersion", testVersion),
         ("testTrimmingEmptyString", testTrimmingEmptyString),
@@ -32,7 +33,48 @@ final class GitCommitTests: XCTestCase {
     let anchoredRule = GitCommitRule(ignoresHashAnchoredLines: true)
     let trimmingAnchoredRule = GitCommitRule(ignoresHashAnchoredLines: true, ignoresTrailingNewLines: true)
     
+    func testErrorDescs() {
+        let allErrors = GitCommitError.all
+        allErrors.forEach {
+            XCTAssertFalse($0.description.isEmpty)
+        }
+    }
+    
     func testBootstrap() {
+        do {
+            try GitCommit.bootstrap()
+        } catch GitCommitError.gitRepositoryNotExist(atPath: _) {
+            XCTAssertTrue(true)
+        } catch let error {
+            XCTAssertFalse(error.localizedDescription.isEmpty)
+            XCTAssertTrue(true)
+        }
+        
+        let pwd = FileManager.default.currentDirectoryPath
+        
+        FileManager.default.createFile(
+            atPath: pwd + "/.git",
+            contents: "test".data(using: .utf8),
+            attributes: nil
+        )
+        
+        do {
+            try GitCommit.bootstrap()
+        } catch GitCommitError.gitRepositoryNotExist(atPath: _) {
+            XCTAssertTrue(true)
+        } catch let error {
+            XCTAssertFalse(error.localizedDescription.isEmpty)
+            XCTAssertTrue(true)
+        }
+        
+        try? FileManager.default.removeItem(atPath: pwd + "/.git")
+        
+        try? FileManager.default.createDirectory(
+            atPath: pwd + "/.git",
+            withIntermediateDirectories: false,
+            attributes: nil
+        )
+        
         do {
             try GitCommit.bootstrap()
         } catch GitCommitError.gitRepositoryNotExist(atPath: _) {

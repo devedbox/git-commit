@@ -30,6 +30,23 @@ public enum GitCommitError: Error {
     case duplicateBootstrap
 }
 
+// MARK: - AllCases.
+
+extension GitCommitError {
+    internal static var all: [GitCommitError] {
+        return [
+            .invalidCommitPath,
+            .emptyCommitContents(atPath: ""),
+            .invalidConfigPath,
+            .emptyConfigContents(atPath: ""),
+            .invalidRange,
+            .gitRepositoryNotExist(atPath: ""),
+            .invalidGitRepository(atPath: ""),
+            .duplicateBootstrap
+        ]
+    }
+}
+
 // MARK: - CustomStringConvertible
 
 extension GitCommitError: CustomStringConvertible {
