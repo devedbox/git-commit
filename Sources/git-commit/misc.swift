@@ -18,7 +18,9 @@ init[--override]: Creates hooks and config files at the project path.
 PATH            : Specify the commit message path to lint.
 """
 /// Notify extra invalid arguments if needed.
-internal func notifyArgumentsErrorIfNeeded(args: [String]) {
+internal func notifyArgumentsErrorIfNeeded(
+    args: [String])
+{
     guard !args.isEmpty else {
         return
     }

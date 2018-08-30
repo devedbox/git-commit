@@ -18,16 +18,23 @@ public struct GitCommit: GitCommitLintable {
     public var commits: String { return _commits }
     
     /// Creates an instance of `GitCommit` with the given commit path.
-    public init(commitPath: String, isAbsolutePath: Bool = false) throws {
+    public init(
+        commitPath: String,
+        isAbsolutePath: Bool = false) throws
+    {
         let path = (isAbsolutePath ? "" : FileManager.default.currentDirectoryPath + "/") + commitPath
         
         guard FileManager.default.fileExists(atPath: path) else {
             throw GitCommitError.invalidCommitPath
         }
         
-        let commitPathUrl = URL(fileURLWithPath: commitPath)
+        let commitPathUrl = URL(
+            fileURLWithPath: commitPath
+        )
         
-        let file = try FileHandle(forReadingFrom: commitPathUrl)
+        let file = try FileHandle(
+            forReadingFrom: commitPathUrl
+        )
         defer {
             file.closeFile()
         }
@@ -49,7 +56,9 @@ public struct GitCommit: GitCommitLintable {
 extension GitCommit: ExpressibleByStringLiteral {
     public typealias StringLiteralType = String
     
-    public init(stringLiteral value: StringLiteralType) {
+    public init(
+        stringLiteral value: StringLiteralType)
+    {
         _commits = value
     }
 }
@@ -79,7 +88,10 @@ extension GitCommit {
         """
         
         var isDirectory: ObjCBool = true
-        let isFileExisting: Bool = FileManager.default.fileExists(atPath: cwd + "/.git", isDirectory: &isDirectory)
+        let isFileExisting: Bool = FileManager.default.fileExists(
+            atPath: cwd + "/.git",
+            isDirectory: &isDirectory
+        )
         
         guard isFileExisting else {
             throw GitCommitError.gitRepositoryNotExist(atPath: cwd)
@@ -96,13 +108,25 @@ extension GitCommit {
             throw GitCommitError.duplicateBootstrap
         }
         
-        try? FileManager.default.removeItem(atPath: commitMsgHookPath)
+        try? FileManager.default.removeItem(
+            atPath: commitMsgHookPath
+        )
         if !FileManager.default.fileExists(atPath: cwd + "/.git/hooks") {
-            try? FileManager.default.createDirectory(atPath: cwd + "/.git/hooks", withIntermediateDirectories: false, attributes: nil)
+            try? FileManager.default.createDirectory(
+                atPath: cwd + "/.git/hooks",
+                withIntermediateDirectories: false,
+                attributes: nil
+            )
         }
-        FileManager.default.createFile(atPath: commitMsgHookPath,
-                                       contents: commitMsgHookContent.data(using: .utf8),
-                                       attributes: [.posixPermissions: 493])
+        FileManager.default.createFile(
+            atPath: commitMsgHookPath,
+            contents: commitMsgHookContent.data(
+                using: .utf8
+            ),
+            attributes: [
+                .posixPermissions: 493
+            ]
+        )
         
         let configPath = cwd + "/.git-commit.yml"
         if !FileManager.default.fileExists(atPath: configPath) {
@@ -118,9 +142,13 @@ extension GitCommit {
             # allows-revert: true # Default is true.
             # ignores-trailing-new-lines: true # Default is false.
             """
-            FileManager.default.createFile(atPath: configPath,
-                                           contents: config.data(using: .utf8),
-                                           attributes: nil)
+            FileManager.default.createFile(
+                atPath: configPath,
+                contents: config.data(
+                    using: .utf8
+                ),
+                attributes: nil
+            )
         }
     }
 }

@@ -11,7 +11,10 @@ import Yams
 private let AsciiPunctuationPattern = NSRegularExpression.escapedPattern(for: "`~!@#$%^&*()_+-=\\{}|;':\",./<>?") + "\\[\\]"
 private let UnicodePunctuationPattern = NSRegularExpression.escapedPattern(for: "·~！@#￥%……&*（）——+-=【】、；‘：“，。、《》？")
 private let PunctuationPattern = AsciiPunctuationPattern + UnicodePunctuationPattern
-private let RegexOptions: NSRegularExpression.Options = [.anchorsMatchLines, .caseInsensitive]
+private let RegexOptions: NSRegularExpression.Options = [
+    .anchorsMatchLines,
+    .caseInsensitive
+]
 
 public struct GitCommitRule: Decodable {
     
@@ -53,7 +56,9 @@ public struct GitCommitRule: Decodable {
     /// Indicates ignores the triling new lines and trimming the trailing new lines when linting. Default is `false`.
     public let ignoresTrailingNewLines: Bool
     
-    public init(at path: String) throws {
+    public init(
+        at path: String) throws
+    {
         guard FileManager.default.fileExists(atPath: path) else {
             throw GitCommitError.invalidConfigPath
         }
@@ -69,10 +74,15 @@ public struct GitCommitRule: Decodable {
             throw GitCommitError.emptyConfigContents(atPath: path)
         }
         
-        self = try YAMLDecoder().decode(type(of: self), from: config)
+        self = try YAMLDecoder().decode(
+            type(of: self),
+            from: config
+        )
     }
     
-    public init(from decoder: Decoder) throws {
+    public init(
+        from decoder: Decoder) throws
+    {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let types = try container.decodeIfPresent([String].self, forKey: .types)
@@ -83,11 +93,26 @@ public struct GitCommitRule: Decodable {
         let allowsReverting = try container.decodeIfPresent(Bool.self, forKey: .allowsReverting)
         let ignoresTrailingNewLines = try container.decodeIfPresent(Bool.self, forKey: .ignoresTrailingNewLines)
         
-        self.init(types: types, scope: scope, isEnabled: isEnabled, ignoringPattern: ignoringPattern, ignoresHashAnchoredLines: ignoresHashAnchoredLines, allowsReverting: allowsReverting, ignoresTrailingNewLines: ignoresTrailingNewLines)
+        self.init(
+            types: types,
+            scope: scope,
+            isEnabled: isEnabled,
+            ignoringPattern: ignoringPattern,
+            ignoresHashAnchoredLines: ignoresHashAnchoredLines,
+            allowsReverting: allowsReverting,
+            ignoresTrailingNewLines: ignoresTrailingNewLines
+        )
     }
     
-    public init(types: [String]? = nil, scope: Scope? = nil, isEnabled: Bool = true, ignoringPattern: String? = nil, ignoresHashAnchoredLines: Bool? = nil, allowsReverting: Bool? = nil, ignoresTrailingNewLines: Bool? = nil) {
-        
+    public init(
+        types: [String]? = nil,
+        scope: Scope? = nil,
+        isEnabled: Bool = true,
+        ignoringPattern: String? = nil,
+        ignoresHashAnchoredLines: Bool? = nil,
+        allowsReverting: Bool? = nil,
+        ignoresTrailingNewLines: Bool? = nil)
+    {
         self.types = types ?? GitCommitType.all.map { $0.rawValue }
         self.scope = scope ?? Scope(isRequired: false, allowsAsciiPunctuation: false)
         self.isEnabled = isEnabled
@@ -101,7 +126,9 @@ public struct GitCommitRule: Decodable {
 extension GitCommitRule {
     
     public static var current: GitCommitRule {
-        return (try? GitCommitRule(at: FileManager.default.currentDirectoryPath + "/.git-commit.yml")) ?? GitCommitRule()
+        return (try? GitCommitRule(
+            at: FileManager.default.currentDirectoryPath + "/.git-commit.yml"
+        )) ?? GitCommitRule()
     }
 }
 
@@ -119,7 +146,9 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         """
     }
     
-    public func map(commits: String) -> String {
+    public func map(
+        commits: String) -> String
+    {
         var commits = commits
         
         if ignoresHashAnchoredLines {
@@ -129,20 +158,30 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         }
         
         if ignoresTrailingNewLines {
-            commits = trimming(charactersIn: .newlines, of: commits)
+            commits = trimming(
+                charactersIn: .newlines,
+                of: commits
+            )
         }
         
         return commits
     }
     
-    public func isEnabled(for commits: String) -> Bool {
-        
-        if let ignoring = ignoringPattern, let ignoringRegex = try? NSRegularExpression(pattern: ignoring, options: RegexOptions) {
-            
+    public func isEnabled(
+        for commits: String) -> Bool
+    {
+        if
+            let ignoring = ignoringPattern,
+            let ignoringRegex = try? NSRegularExpression(pattern: ignoring, options: RegexOptions)
+        {
             let range = (commits as NSString).range(of: commits)
-            let matchs = ignoringRegex.matches(in: commits,
-                                               options: [.anchored],
-                                               range: range)
+            let matchs = ignoringRegex.matches(
+                in: commits,
+                options: [
+                    .anchored
+                ],
+                range: range
+            )
             
             if matchs.count == 1, case let match? = matchs.last, match.range == range {
                 return false
@@ -155,7 +194,10 @@ extension GitCommitRule: GitCommitRuleRepresentable {
     public func asRegex() throws -> NSRegularExpression {
         
         guard isEnabled else {
-            return try NSRegularExpression(pattern: "^[\\s.]*$", options: RegexOptions)
+            return try NSRegularExpression(
+                pattern: "^[\\s.]*$",
+                options: RegexOptions
+            )
         }
         
         let availableCommitTypes = types.joined(separator: "|")
@@ -186,6 +228,9 @@ extension GitCommitRule: GitCommitRuleRepresentable {
         
         let pattern = "^(\(revert)|\(commit))$"
         
-        return try NSRegularExpression(pattern: pattern, options: RegexOptions)
+        return try NSRegularExpression(
+            pattern: pattern,
+            options: RegexOptions
+        )
     }
 }

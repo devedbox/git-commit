@@ -25,7 +25,9 @@ public enum Severity {
     case warning
     case notes
     
-    func value(for contents: String) -> String {
+    func value(
+        for contents: String) -> String
+    {
         switch self {
         case .default:
             return "\(ESC)[;1m\(contents)\(ESC)[0m"
@@ -40,17 +42,34 @@ public enum Severity {
 }
 
 /// Echos message to the console using the given value of `Severity`.
-public func echo(_ severity: Severity = .default, message: @autoclosure () -> Any) { print(severity.value(for: "\(message())")) }
+public func echo(
+    _ severity: Severity = .default,
+    message: @autoclosure () -> Any)
+{
+    print(severity.value(for: "\(message())"))
+}
 
 /// Trimming characters with the given character set of the given string.
-public func trimming(charactersIn characterSet: CharacterSet, of string: String) -> String {
+public func trimming(
+    charactersIn characterSet: CharacterSet,
+    of string: String) -> String
+{
     guard !string.isEmpty else {
         return string
     }
     
     var string = string
     var index = string.index(before: string.endIndex)
-    while index >= string.startIndex, characterSet.isSuperset(of: CharacterSet(charactersIn: String(string[index]))) {
+    while 
+        index >= string.startIndex,
+        characterSet.isSuperset(
+            of: CharacterSet(
+                charactersIn: String(
+                    string[index]
+                )
+            )
+        )
+    {
         string.remove(at: index)
         string.formIndex(before: &index)
     }

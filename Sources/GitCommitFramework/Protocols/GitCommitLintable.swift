@@ -19,7 +19,10 @@ public protocol GitCommitLintable {
 
 extension GitCommitLintable {
     @discardableResult
-    public func lint(with rule: Rule, options: GitCommitLintOptions = []) throws -> Bool {
+    public func lint(
+        with rule: Rule,
+        options: GitCommitLintOptions = []) throws -> Bool
+    {
         let commits = rule.map(commits: self.commits)
         
         guard rule.isEnabled(for: commits) else {
@@ -28,19 +31,33 @@ extension GitCommitLintable {
         
         let regex = try rule.asRegex()
         
-        let range = (commits as NSString).range(of: commits)
+        let range = (commits as NSString).range(
+            of: commits
+        )
         
         guard range.location != NSNotFound && range.length != NSNotFound else {
             throw GitCommitError.invalidRange
         }
         
-        let matches = regex.matches(in: commits, options: [.anchored], range: range)
+        let matches = regex.matches(
+            in: commits,
+            options: [.anchored],
+            range: range
+        )
         
-        let verbose = options.contains(GitCommitLintOptions.verbose)
+        let verbose = options.contains(
+            GitCommitLintOptions.verbose
+        )
         
         if verbose {
             echo(message: matches.count)
-            matches.forEach { echo(message: (commits as NSString).substring(with: $0.range)) }
+            matches.forEach {
+                echo(
+                    message: (commits as NSString).substring(
+                        with: $0.range
+                    )
+                )
+            }
         }
         
         guard matches.startIndex == matches.index(before: matches.endIndex)
@@ -69,12 +86,18 @@ extension GitCommitLintable {
             Please check and follow the commit pattern:
             -------------------------------------------
             """)
-            echo(.notes, message: "\n\(rule.debugDescription)\n")
+            echo(
+                .notes,
+                message: "\n\(rule.debugDescription)\n"
+            )
             return false
         }
         
         if verbose {
-            echo(.notes, message: "\nCommit message: \n```\n\(commits)\n```\npassed!!!")
+            echo(
+                .notes,
+                message: "\nCommit message: \n```\n\(commits)\n```\npassed!!!"
+            )
         }
         
         return true

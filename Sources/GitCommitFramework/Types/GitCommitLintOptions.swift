@@ -16,7 +16,9 @@ public struct GitCommitLintOptions: OptionSet {
         return _rawValue
     }
     
-    public init(rawValue: RawValue) {
+    public init(
+        rawValue: RawValue)
+    {
         _rawValue = rawValue
     }
 }

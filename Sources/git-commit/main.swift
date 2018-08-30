@@ -32,9 +32,15 @@ case "version": // Shows the version info.
     notifyArgumentsErrorIfNeeded(args: Array(commands[2...]))
     echo(message: GitCommit.version)
 case "init": // Bootstrap.
-    let allowsOverriding = commands.index(1, offsetBy: 1, limitedBy: commands.index(before: commands.endIndex)).map { commands[$0] == "--override" } ?? false
+    let allowsOverriding = commands.index(
+        1,
+        offsetBy: 1,
+        limitedBy: commands.index(before: commands.endIndex)
+    ).map { commands[$0] == "--override" } ?? false
     
-    notifyArgumentsErrorIfNeeded(args: Array(commands[(allowsOverriding ? 3 : 2)...]))
+    notifyArgumentsErrorIfNeeded(
+        args: Array(commands[(allowsOverriding ? 3 : 2)...])
+    )
     
     do {
         try GitCommit.bootstrap(allowsOverriding: allowsOverriding)

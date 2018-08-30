@@ -33,11 +33,15 @@ public protocol GitCommitRuleRepresentable: RegularExpressionConvertible, Custom
 
 extension GitCommitRuleRepresentable {
     
-    public func map(commits: String) -> String {
+    public func map(
+        commits: String) -> String
+    {
         return commits
     }
     
-    public func isEnabled(for commits: String) -> Bool {
+    public func isEnabled(
+        for commits: String) -> Bool
+    {
         return isEnabled
     }
 }
